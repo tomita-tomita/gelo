@@ -18,7 +18,7 @@ public class GeradorSQL {
 
     public enum tipoOperacao {
 
-        ENTRADA, SAIDA, TESTE;
+        ENTRADA, SAIDA;
     }
 
     public void cadastrarProduto(Produto novoProduto) throws SQLException {
