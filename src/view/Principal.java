@@ -43,6 +43,7 @@ public class Principal extends javax.swing.JFrame {
         jMenuItem7.setText("jMenuItem7");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Controle de Estoque");
 
         jMenuProdutos.setText("Produtos");
 
@@ -135,6 +136,7 @@ public class Principal extends javax.swing.JFrame {
 
     private void jMenuCadastrarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuCadastrarProdutoActionPerformed
         CadastroProduto cadastroProduto = new CadastroProduto();       
+        cadastroProduto.setTitle("Cadastrar Produto");
         cadastroProduto.setVisible(true);
     }//GEN-LAST:event_jMenuCadastrarProdutoActionPerformed
 

@@ -52,6 +52,7 @@ public class ConsultaProdutos extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
+        setTitle("Consulta de Produtos");
         setMinimumSize(new java.awt.Dimension(800, 600));
         setPreferredSize(new java.awt.Dimension(800, 600));
 
@@ -209,8 +210,9 @@ public class ConsultaProdutos extends javax.swing.JFrame {
             CadastroProduto cadastroProduto;
             DefaultTableModel model = (DefaultTableModel) jTableProdutos.getModel();
             GeradorSQL gerador = new GeradorSQL();
-            produto = gerador.pesquisarProduto("codigo", "'" + model.getValueAt(jTableProdutos.getSelectedRow(), 0) + "'");
+            produto = gerador.pesquisarProduto("id", "'" + model.getValueAt(jTableProdutos.getSelectedRow(), 0) + "'");
             cadastroProduto = new CadastroProduto(produto);
+            cadastroProduto.setTitle("Alterar o Produto: " + produto.getDescricao());
             cadastroProduto.setVisible(true);
             cadastroProduto.addWindowListener(new WindowAdapter() {
                 @Override
@@ -245,7 +247,7 @@ public class ConsultaProdutos extends javax.swing.JFrame {
         String comandoWhere = "";
 
         if (!jTextFieldCodigo.getText().equals("")) {
-            comandoWhere = "codigo =  '" + jTextFieldCodigo.getText() + "' ";
+            comandoWhere = "id =  '" + jTextFieldCodigo.getText() + "' ";
         }
         if (!jTextFieldDescricao.getText().equals("")) {
             if (!comandoWhere.equals("")) {

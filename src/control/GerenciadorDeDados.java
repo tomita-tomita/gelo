@@ -143,7 +143,7 @@ public class GerenciadorDeDados {
         ResultSet resultSet = st.executeQuery("SELECT * "
                 + "FROM controleestoque.produtos "
                 + "WHERE "
-                + "codigo = '" + codigoProduto
+                + "codigo_barras = '" + codigoProduto
                 + "'");
         resultSet.first();
         return Integer.parseInt(resultSet.getObject(1).toString());
@@ -158,10 +158,9 @@ public class GerenciadorDeDados {
         resultSet.first();
         produto = new Produto(Integer.parseInt(resultSet.getObject(1).toString()),
                 resultSet.getObject(2).toString(),
-                resultSet.getObject(3).toString(),
-                resultSet.getObject(4).toString(),
-                Float.parseFloat(resultSet.getObject(5).toString()),
-                Float.parseFloat(resultSet.getObject(6).toString()));
+                resultSet.getObject(3).toString(),                
+                Float.parseFloat(resultSet.getObject(4).toString()),
+                Float.parseFloat(resultSet.getObject(5).toString()));
         return produto;
     }
 

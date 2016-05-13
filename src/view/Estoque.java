@@ -55,6 +55,7 @@ public class Estoque extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableEstoque = new javax.swing.JTable();
 
+        setTitle("Consulta de Estoque");
         setMinimumSize(new java.awt.Dimension(800, 600));
         setPreferredSize(new java.awt.Dimension(800, 600));
         setResizable(false);
