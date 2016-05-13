@@ -3,12 +3,8 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/valdir/Documents/gelo/src/view/ConsultaProdutos.java</file>
-            <file>file:/C:/Users/valdir/Documents/gelo/src/view/Principal.java</file>
-            <file>file:/C:/Users/valdir/Documents/gelo/src/view/Estoque.java</file>
-            <file>file:/C:/Users/valdir/Documents/gelo/src/view/SeletorProduto.java</file>
-            <file>file:/C:/Users/valdir/Documents/gelo/src/control/GeradorSQL.java</file>
-            <file>file:/C:/Users/valdir/Documents/gelo/src/view/GeradorRecibo.java</file>
+            <file>file:/C:/Users/IBF/Documents/gelo/src/view/GeradorRecibo.java</file>
+            <file>file:/C:/Users/IBF/Documents/gelo/src/view/Principal.java</file>
         </group>
     </open-files>
 </project-private>
