@@ -113,6 +113,11 @@ public class Principal extends javax.swing.JFrame {
         jMenu5.setText("Ferramentas");
 
         jMenuItem9.setText("Gerar Recibo");
+        jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem9ActionPerformed(evt);
+            }
+        });
         jMenu5.add(jMenuItem9);
 
         jMenuBar1.add(jMenu5);
@@ -159,6 +164,11 @@ public class Principal extends javax.swing.JFrame {
         ConsultaProdutos consultaProdutos = new ConsultaProdutos();
         consultaProdutos.setVisible(true);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
+        GeradorRecibo geradorRecibo = new GeradorRecibo();
+        geradorRecibo.setVisible(true);
+    }//GEN-LAST:event_jMenuItem9ActionPerformed
 
     /**
      * @param args the command line arguments

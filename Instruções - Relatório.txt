@@ -1,0 +1,14 @@
+http://www.guj.com.br/t/como-enviar-um-formulario-java-para-imprimir-na-impressora/84374/2
+
+Bom, então antes de mais nada você pode baixar o iReport:
+
+http://jasperforge.org/projects/ireport6
+
+com essa ferramente você pode formatar o seu relatório com arrastar e soltar e depois integrá-lo ao seu aplicativo.
+
+No link abaixo tem um tutorial, dentre os milhares que existem na net:
+
+http://davidbuzatto.com.br/2010/10/09/jasperreports-trabalhando-com-relatorios-em-java-parte-1/4
+
+Depois que você monta o relatório, fica fácil. Basta colocar o relatório compilado junto com suas classes, colocar o .jar do Jasper no classpath e você consegue chamar um método para preencher os dados do relatório e gerar um stream para enviar à impressora.
+
