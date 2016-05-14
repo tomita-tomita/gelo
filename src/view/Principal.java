@@ -3,10 +3,17 @@ package view;
 import com.alee.laf.WebLookAndFeel;
 import control.GeradorSQL;
 import static java.awt.Frame.MAXIMIZED_BOTH;
+import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.InputStream;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import net.sf.jasperreports.engine.JRException;
@@ -15,6 +22,8 @@ import utils.ReportUtils;
 
 public class Principal extends javax.swing.JFrame {
 
+    BufferedImage imagemFundo;
+    
     public Principal() {
         try {
             UIManager.setLookAndFeel(new WebLookAndFeel());
@@ -23,13 +32,14 @@ public class Principal extends javax.swing.JFrame {
         initComponents();
         setExtendedState(MAXIMIZED_BOTH);
     }
-
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         jMenu3 = new javax.swing.JMenu();
         jMenuItem7 = new javax.swing.JMenuItem();
+        uJPanelImagem1 = new componentes.UJPanelImagem();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenuProdutos = new javax.swing.JMenu();
         jMenuCadastrarProduto = new javax.swing.JMenuItem();
@@ -52,6 +62,21 @@ public class Principal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Controle de Estoque");
+
+        uJPanelImagem1.setImagem(new java.io.File("C:\\Users\\Eduardo Tomita\\Documents\\Projetos\\gelo\\src\\imagens\\Logo.jpg"));
+
+        javax.swing.GroupLayout uJPanelImagem1Layout = new javax.swing.GroupLayout(uJPanelImagem1);
+        uJPanelImagem1.setLayout(uJPanelImagem1Layout);
+        uJPanelImagem1Layout.setHorizontalGroup(
+            uJPanelImagem1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        uJPanelImagem1Layout.setVerticalGroup(
+            uJPanelImagem1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 279, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(uJPanelImagem1, java.awt.BorderLayout.CENTER);
 
         jMenuProdutos.setText("Produtos");
 
@@ -142,17 +167,6 @@ public class Principal extends javax.swing.JFrame {
 
         setJMenuBar(jMenuBar1);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 279, Short.MAX_VALUE)
-        );
-
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
@@ -189,15 +203,17 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem9ActionPerformed
 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
-        MovimentacaoCaixa caixa = new MovimentacaoCaixa(GeradorSQL.tipoOperacao.ENTRADA);
-        caixa.setVisible(true);
-        caixa.setLocationRelativeTo(null);
+        MovimentacaoCaixa entrada_caixa = new MovimentacaoCaixa(GeradorSQL.tipoOperacao.ENTRADA);
+        entrada_caixa.setVisible(true);
+        entrada_caixa.setTitle("Cadastrar entrada de caixa");
+        entrada_caixa.setLocationRelativeTo(null);
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
-        MovimentacaoCaixa caixa = new MovimentacaoCaixa(GeradorSQL.tipoOperacao.SAIDA);
-        caixa.setVisible(true);
-        caixa.setLocationRelativeTo(null);
+        MovimentacaoCaixa saida_caixa = new MovimentacaoCaixa(GeradorSQL.tipoOperacao.SAIDA);
+        saida_caixa.setVisible(true);
+        saida_caixa.setTitle("Cadastrar saída de caixa");
+        saida_caixa.setLocationRelativeTo(null);
     }//GEN-LAST:event_jMenuItem8ActionPerformed
 
     /**
@@ -253,5 +269,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JMenu jMenuProdutos;
+    private componentes.UJPanelImagem uJPanelImagem1;
     // End of variables declaration//GEN-END:variables
 }

@@ -9,6 +9,7 @@ import control.GeradorSQL;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.SpinnerNumberModel;
 
 /**
@@ -45,10 +46,14 @@ public class MovimentacaoCaixa extends javax.swing.JFrame {
         jTextFieldValorMovimentacao = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        gravarMovimentacaoCaixa = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTableMovimentacaoCaixa = new javax.swing.JTable();
 
         jButton1.setText("jButton1");
+
+        setResizable(false);
 
         jTextFieldDescricaoMovimentacao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -62,18 +67,16 @@ public class MovimentacaoCaixa extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setText("Descrição");
+        jLabel1.setText("Descrição*");
 
-        jLabel2.setText("Valor");
+        jLabel2.setText("Valor*");
 
-        jButton2.setText("Gravar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        gravarMovimentacaoCaixa.setText("Gravar");
+        gravarMovimentacaoCaixa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                gravarMovimentacaoCaixaActionPerformed(evt);
             }
         });
-
-        jButton3.setText("Cancelar");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -82,16 +85,14 @@ public class MovimentacaoCaixa extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(26, 26, 26)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(69, 69, 69)
-                        .addComponent(jButton2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton3))
                     .addComponent(jLabel1)
-                    .addComponent(jTextFieldDescricaoMovimentacao, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextFieldValorMovimentacao, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(84, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jTextFieldValorMovimentacao, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 251, Short.MAX_VALUE)
+                        .addComponent(gravarMovimentacaoCaixa))
+                    .addComponent(jTextFieldDescricaoMovimentacao, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -102,20 +103,38 @@ public class MovimentacaoCaixa extends javax.swing.JFrame {
                 .addComponent(jTextFieldDescricaoMovimentacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel2)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextFieldValorMovimentacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton2)
-                            .addComponent(jButton3))
-                        .addGap(21, 21, 21))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextFieldValorMovimentacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(gravarMovimentacaoCaixa))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.PAGE_START);
+
+        jPanel2.setLayout(new java.awt.BorderLayout());
+
+        jTableMovimentacaoCaixa.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Descrição ", "Valor", "Tipo Movimentação"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(jTableMovimentacaoCaixa);
+
+        jPanel2.add(jScrollPane1, java.awt.BorderLayout.CENTER);
+
+        getContentPane().add(jPanel2, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -128,16 +147,24 @@ public class MovimentacaoCaixa extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldDescricaoMovimentacaoActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void gravarMovimentacaoCaixaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gravarMovimentacaoCaixaActionPerformed
+        if(jTextFieldDescricaoMovimentacao.getText().isEmpty() || jTextFieldValorMovimentacao.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "Campos obrigatórios não foram preenchidos.", "Dados incorretos", JOptionPane.DEFAULT_OPTION);
+        }else{
             try {
                 GeradorSQL geradorSQL = new GeradorSQL();
                 geradorSQL.realizaMovimentacaoCaixa(jTextFieldDescricaoMovimentacao.getText(),
                         jTextFieldValorMovimentacao.getText(), operacao);
                 //inserirHistoricoTabela(jTextFieldCodigoBarras.getText(), jSpinnerQuantidade.getValue().toString());
+                jTextFieldDescricaoMovimentacao.setText("");
+                jTextFieldDescricaoMovimentacao.grabFocus();
+                jTextFieldValorMovimentacao.setText("");
+                JOptionPane.showMessageDialog(null, "Registro salvo com sucesso.", null, JOptionPane.DEFAULT_OPTION);
             } catch (SQLException ex) {
                 Logger.getLogger(MovimentacaoEstoque.class.getName()).log(Level.SEVERE, null, ex);
             }        
-    }//GEN-LAST:event_jButton2ActionPerformed
+        }
+    }//GEN-LAST:event_gravarMovimentacaoCaixaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -175,12 +202,14 @@ public class MovimentacaoCaixa extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton gravarMovimentacaoCaixa;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTableMovimentacaoCaixa;
     private javax.swing.JTextField jTextFieldDescricaoMovimentacao;
     private javax.swing.JTextField jTextFieldValorMovimentacao;
     // End of variables declaration//GEN-END:variables

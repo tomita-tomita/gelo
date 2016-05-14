@@ -4,8 +4,8 @@ CREATE TABLE `controleEstoque`.`produtos` ( `id` INT NOT NULL AUTO_INCREMENT , `
 
 CREATE TABLE `controleEstoque`.`estoque` ( `id` INT NOT NULL AUTO_INCREMENT , `id_produto` INT NOT NULL , `quantidade` INT NOT NULL DEFAULT '0' , PRIMARY KEY (`id`)) ENGINE = MyISAM; 
 
-<<<<
-CREATE TABLE `controleestoque`.`caixa` ( `id` INT NOT NULL AUTO_INCREMENT , `descricao` TEXT NULL , `valor` DECIMAL(10,2) NOT NULL , `data` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP , `tipo_movimentacao` CHAR NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;
+
+CREATE TABLE `controleestoque`.`caixa` ( `id` INT NOT NULL AUTO_INCREMENT , `descricao` TEXT NULL , `valor` VARCHAR(255) NOT NULL , `data` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP , `tipo_movimentacao` VARCHAR(20) NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;
 
 CREATE TABLE `recibos` (
   `id` INTEGER(11) NOT NULL AUTO_INCREMENT,
