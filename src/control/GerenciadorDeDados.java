@@ -130,6 +130,7 @@ public class GerenciadorDeDados {
 
     //A exceção deverá ser tratada na classe que chamar a função abaixo
     public void executar(String comando) throws SQLException {
+        System.out.println(comando);
         Connection connect;
         connect = DriverManager.getConnection(URL, USUARIO, SENHA);
         Statement st = connect.createStatement();

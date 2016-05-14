@@ -126,6 +126,15 @@ public class GeradorSQL {
         };
     }
 
+    public void realizaMovimentacaoCaixa(String descricao, String valor, tipoOperacao operacao) throws SQLException{
+        String sql;
+        sql = "INSERT controleestoque.caixa set "                
+                + "descricao = '" + descricao + "', "
+                + "valor = '" + valor + "', "
+                + "tipo_movimentacao = '" + operacao + "';";
+        gerenciadorDeDados.executar(sql);
+    };
+    
     public void realizarMovimentacao(String codigoBarras, int quantidade, tipoOperacao operacao) throws SQLException {
         String sql;
         String operador;

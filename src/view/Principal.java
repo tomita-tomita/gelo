@@ -101,9 +101,19 @@ public class Principal extends javax.swing.JFrame {
         jMenu4.setText("Fluxo de Caixa");
 
         jMenuItem5.setText("Entrada");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
         jMenu4.add(jMenuItem5);
 
         jMenuItem8.setText("Saída");
+        jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem8ActionPerformed(evt);
+            }
+        });
         jMenu4.add(jMenuItem8);
 
         jMenu2.add(jMenu4);
@@ -169,6 +179,18 @@ public class Principal extends javax.swing.JFrame {
         GeradorRecibo geradorRecibo = new GeradorRecibo();
         geradorRecibo.setVisible(true);
     }//GEN-LAST:event_jMenuItem9ActionPerformed
+
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        MovimentacaoCaixa caixa = new MovimentacaoCaixa(GeradorSQL.tipoOperacao.ENTRADA);
+        caixa.setVisible(true);
+        caixa.setLocationRelativeTo(null);
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
+
+    private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
+        MovimentacaoCaixa caixa = new MovimentacaoCaixa(GeradorSQL.tipoOperacao.SAIDA);
+        caixa.setVisible(true);
+        caixa.setLocationRelativeTo(null);
+    }//GEN-LAST:event_jMenuItem8ActionPerformed
 
     /**
      * @param args the command line arguments
