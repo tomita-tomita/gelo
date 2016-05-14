@@ -4,9 +4,9 @@ CREATE TABLE `controleEstoque`.`produtos` ( `id` INT NOT NULL AUTO_INCREMENT , `
 
 CREATE TABLE `controleEstoque`.`estoque` ( `id` INT NOT NULL AUTO_INCREMENT , `id_produto` INT NOT NULL , `quantidade` INT NOT NULL DEFAULT '0' , PRIMARY KEY (`id`)) ENGINE = MyISAM; 
 
-<<<<<<< HEAD
+<<<<
 CREATE TABLE `controleestoque`.`caixa` ( `id` INT NOT NULL AUTO_INCREMENT , `descricao` TEXT NULL , `valor` DECIMAL(10,2) NOT NULL , `data` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP , `tipo_movimentacao` CHAR NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;
-=======
+
 CREATE TABLE `recibos` (
   `id` INTEGER(11) NOT NULL AUTO_INCREMENT,
   `cliente` VARCHAR(100) COLLATE latin1_swedish_ci NOT NULL,
@@ -31,4 +31,4 @@ CREATE TABLE `recibos` (
 ) ENGINE=MyISAM
 AUTO_INCREMENT=2 CHARACTER SET 'latin1' COLLATE 'latin1_swedish_ci'
 ;
->>>>>>> f1b0bc99972f1d755e13c328111a5a63c77803f2
+
