@@ -3,11 +3,19 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/Eduardo%20Tomita/Documents/Projetos/gelo/src/control/GerenciadorDeDados.java</file>
             <file>file:/C:/Users/Eduardo%20Tomita/Documents/Projetos/gelo/src/control/GeradorSQL.java</file>
             <file>file:/C:/Users/Eduardo%20Tomita/Documents/Projetos/gelo/src/view/MovimentacaoCaixa.java</file>
             <file>file:/C:/Users/Eduardo%20Tomita/Documents/Projetos/gelo/src/view/MovimentacaoEstoque.java</file>
             <file>file:/C:/Users/Eduardo%20Tomita/Documents/Projetos/gelo/src/view/Principal.java</file>
+=======
+            <file>file:/C:/Users/valdir/Documents/gelo/src/control/Recibo.java</file>
+            <file>file:/C:/Users/valdir/Documents/gelo/src/control/GerenciadorDeDados.java</file>
+            <file>file:/C:/Users/valdir/Documents/gelo/src/view/Principal.java</file>
+            <file>file:/C:/Users/valdir/Documents/gelo/src/control/GeradorSQL.java</file>
+            <file>file:/C:/Users/valdir/Documents/gelo/src/view/GeradorRecibo.java</file>
+>>>>>>> f1b0bc99972f1d755e13c328111a5a63c77803f2
         </group>
     </open-files>
 </project-private>
