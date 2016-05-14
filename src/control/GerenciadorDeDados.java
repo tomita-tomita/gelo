@@ -158,10 +158,23 @@ public class GerenciadorDeDados {
         resultSet.first();
         produto = new Produto(Integer.parseInt(resultSet.getObject(1).toString()),
                 resultSet.getObject(2).toString(),
-                resultSet.getObject(3).toString(),                
+                resultSet.getObject(3).toString(),
                 Float.parseFloat(resultSet.getObject(4).toString()),
                 Float.parseFloat(resultSet.getObject(5).toString()));
         return produto;
     }
 
+    public int getId(String tabela) {
+        try {
+            String sql = "SELECT MAX(id) FROM " + tabela;
+            Connection connect;
+            connect = DriverManager.getConnection(URL, USUARIO, SENHA);
+            Statement st = connect.createStatement();
+            ResultSet resultSet = st.executeQuery(sql);
+            resultSet.first();
+            return resultSet.getInt(1);            
+        } catch (SQLException ex) {
+            return 0;
+        }
+    }
 }
