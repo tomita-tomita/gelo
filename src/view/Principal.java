@@ -3,10 +3,18 @@ package view;
 import com.alee.laf.WebLookAndFeel;
 import control.GeradorSQL;
 import static java.awt.Frame.MAXIMIZED_BOTH;
+import java.io.InputStream;
+import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Map;
+import javax.swing.JOptionPane;
 import javax.swing.UIManager;
+import net.sf.jasperreports.engine.JRException;
+import utils.ConnectionFactory;
+import utils.ReportUtils;
 
 public class Principal extends javax.swing.JFrame {
-    
+
     public Principal() {
         try {
             UIManager.setLookAndFeel(new WebLookAndFeel());
@@ -140,7 +148,7 @@ public class Principal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuCadastrarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuCadastrarProdutoActionPerformed
-        CadastroProduto cadastroProduto = new CadastroProduto();       
+        CadastroProduto cadastroProduto = new CadastroProduto();
         cadastroProduto.setTitle("Cadastrar Produto");
         cadastroProduto.setVisible(true);
     }//GEN-LAST:event_jMenuCadastrarProdutoActionPerformed

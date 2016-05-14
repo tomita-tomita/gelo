@@ -6,11 +6,18 @@ import control.Produto;
 import control.Recibo;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.io.InputStream;
+import java.sql.SQLException;
 import java.util.Date;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Map;
 import javax.swing.table.DefaultTableModel;
+import net.sf.jasperreports.engine.JRException;
+import utils.ConnectionFactory;
+import utils.ReportUtils;
 
 public class GeradorRecibo extends javax.swing.JFrame {
 
@@ -44,7 +51,6 @@ public class GeradorRecibo extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableProdutos = new javax.swing.JTable();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Gerar Recibo");
         setMinimumSize(new java.awt.Dimension(800, 600));
         setPreferredSize(new java.awt.Dimension(800, 600));
@@ -222,6 +228,7 @@ public class GeradorRecibo extends javax.swing.JFrame {
         getContentPane().add(jPanel3, java.awt.BorderLayout.CENTER);
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTextFieldFoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldFoneActionPerformed
@@ -256,6 +263,7 @@ public class GeradorRecibo extends javax.swing.JFrame {
         DefaultTableModel model = (DefaultTableModel) jTableProdutos.getModel();
         produtos.remove(jTableProdutos.getSelectedRow());
         model.removeRow(jTableProdutos.getSelectedRow());
+        jTableProdutos.setModel(model);
     }//GEN-LAST:event_jButtonRemoverItemActionPerformed
 
     private void jTableProdutosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableProdutosMouseClicked
@@ -265,20 +273,59 @@ public class GeradorRecibo extends javax.swing.JFrame {
     }//GEN-LAST:event_jTableProdutosMouseClicked
 
     private void jButtonGerarReciboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGerarReciboActionPerformed
-        GeradorSQL geradorSQL = new GeradorSQL();        
-        preencherProdutos();
-        Recibo recibo = new Recibo(jTextFieldCliente.getText(),
-                jTextFieldEndereco.getText(),
-                jTextFieldFone.getText(),                
-                Float.parseFloat(jTextFieldTaxaEntrega.getText()), produtos);
-        geradorSQL.gravarRecibo(recibo);
+        if (validarCampos()) {
+            GeradorSQL geradorSQL = new GeradorSQL();
+            int id;
+            preencherProdutos();
+            Recibo recibo = new Recibo(jTextFieldCliente.getText(),
+                    jTextFieldEndereco.getText(),
+                    jTextFieldFone.getText(),
+                    Float.parseFloat(jTextFieldTaxaEntrega.getText()), produtos);
+            id = geradorSQL.gravarRecibo(recibo);
+            gerarRecibo(id);
+            limparCampos();
+        }
     }//GEN-LAST:event_jButtonGerarReciboActionPerformed
+
+    private boolean validarCampos() {
+        return true;
+    }
 
     private void preencherProdutos() {
         DefaultTableModel model = (DefaultTableModel) jTableProdutos.getModel();
         for (int i = 0; i < model.getRowCount(); i++) {
             ItemRecibo itemRecibo = new ItemRecibo(Integer.parseInt(model.getValueAt(i, 0).toString()), model.getValueAt(i, 1).toString(), Float.parseFloat(model.getValueAt(i, 2).toString()), Float.parseFloat(model.getValueAt(i, 3).toString()));
             produtos.add(itemRecibo);
+        }
+    }
+
+    private void limparCampos() {
+        produtos.clear();
+        jTextFieldCliente.setText("");
+        jTextFieldEndereco.setText("");
+        jTextFieldFone.setText("");
+        jTextFieldTaxaEntrega.setText("");
+        DefaultTableModel model = (DefaultTableModel) jTableProdutos.getModel();
+        for (int i = 0; i < model.getRowCount(); i++) {
+            model.removeRow(i);
+        }
+        jTableProdutos.setModel(model);
+
+    }
+
+    private void gerarRecibo(int id) {
+        InputStream inputStream = getClass().getResourceAsStream("/relatorios/Recibo.jasper");
+        Map parametros = new HashMap();
+        parametros.put("id", id);
+        try {
+
+            // abre o recibo
+            ReportUtils.openReport("Recibo", inputStream, parametros,
+                    ConnectionFactory.getConnectionControleEstoque());
+        } catch (SQLException exc) {
+            exc.printStackTrace();
+        } catch (JRException exc) {
+            exc.printStackTrace();
         }
     }
 

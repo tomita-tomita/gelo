@@ -153,7 +153,7 @@ public class GeradorSQL {
         return gerenciadorDeDados.getProduto(sql);
     }
 
-    public void gravarRecibo(Recibo recibo) {
+    public int gravarRecibo(Recibo recibo) {
         ArrayList<ItemRecibo> itensRecibo = recibo.getItensRecibo();
         String sql = "INSERT controleestoque.recibos set "
                 + " cliente = '" + recibo.getCliente() + "', "
@@ -177,5 +177,7 @@ public class GeradorSQL {
             
             gerenciadorDeDados.executarComando(sql);
         }
+        
+        return id;
     }
 }

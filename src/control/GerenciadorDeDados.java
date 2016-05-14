@@ -166,13 +166,14 @@ public class GerenciadorDeDados {
 
     public int getId(String tabela) {
         try {
-            String sql = "SELECT MAX(id) FROM " + tabela;
+
+            String sql = "SELECT id FROM controleEstoque." + tabela + " ORDER BY id DESC LIMIT 1";
             Connection connect;
             connect = DriverManager.getConnection(URL, USUARIO, SENHA);
             Statement st = connect.createStatement();
             ResultSet resultSet = st.executeQuery(sql);
             resultSet.first();
-            return resultSet.getInt(1);            
+            return Integer.parseInt(resultSet.getObject(1).toString());
         } catch (SQLException ex) {
             return 0;
         }
