@@ -1,7 +1,9 @@
 package control;
 
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import static javassist.CtMethod.ConstParameter.string;
 import javax.swing.table.DefaultTableModel;
 
 public class GeradorSQL {
@@ -126,11 +128,24 @@ public class GeradorSQL {
         };
     }
 
+    public String consultaSaldoCaixa () throws SQLException{
+        String sql;
+        String data = (new java.text.SimpleDateFormat("yyy-MM-dd").format(new java.util.Date(System.currentTimeMillis())));
+        sql = "SELECT sum(valor) as saldo FROM controleestoque.caixa WHERE data like '%"+ data +"%';";
+        return gerenciadorDeDados.getSaldo(sql);
+    }
+    
     public void realizaMovimentacaoCaixa(String descricao, String valor, tipoOperacao operacao) throws SQLException{
         String sql;
+        String operador;
+        if (operacao == tipoOperacao.SAIDA) {
+            operador = "-";
+        } else {
+            operador = "";
+        }        
         sql = "INSERT controleestoque.caixa set "                
                 + "descricao = '" + descricao + "', "
-                + "valor = '" + valor + "', "
+                + "valor = '"+ operador + valor + "', "
                 + "tipo_movimentacao = '" + operacao + "';";
         gerenciadorDeDados.executar(sql);
     };

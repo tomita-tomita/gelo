@@ -206,7 +206,7 @@ public class Principal extends javax.swing.JFrame {
         MovimentacaoCaixa entrada_caixa = new MovimentacaoCaixa(GeradorSQL.tipoOperacao.ENTRADA);
         entrada_caixa.setVisible(true);
         entrada_caixa.setTitle("Cadastrar entrada de caixa");
-        entrada_caixa.setLocationRelativeTo(null);
+        entrada_caixa.setLocationRelativeTo(null);       
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
