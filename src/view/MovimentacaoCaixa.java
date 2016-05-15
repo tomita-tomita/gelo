@@ -120,6 +120,7 @@ public class MovimentacaoCaixa extends javax.swing.JFrame {
 
         jLabel4.setText("Saldo atual do dia");
 
+        jTextFieldSaldoCaixa.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         jTextFieldSaldoCaixa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldSaldoCaixaActionPerformed(evt);
