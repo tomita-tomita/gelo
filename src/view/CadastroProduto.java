@@ -221,18 +221,16 @@ public class CadastroProduto extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonGravarActionPerformed
 
     private void jTextFieldCodigoBarrasKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldCodigoBarrasKeyTyped
-        // TODO add your handling code here:
+        String valor = jTextFieldCodigoBarras.getText();
+        if (valor.length() >= 20) {
+            evt.setKeyChar((char) KeyEvent.VK_CLEAR);
+        }
     }//GEN-LAST:event_jTextFieldCodigoBarrasKeyTyped
 
     private void jTextFieldCodigoBarrasKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldCodigoBarrasKeyReleased
-        if (jTextFieldCodigoBarras.getValue().toString().length() < 20){
 
-        }else{
-            evt.setKeyChar((char) KeyEvent.VK_CLEAR);
-        }
     }//GEN-LAST:event_jTextFieldCodigoBarrasKeyReleased
-    
-    
+
     private boolean validarCampos() {
         if (jTextFielDescricao.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "A descrição do produto deve ser preenchida", "Informações Incompletas", JOptionPane.ERROR_MESSAGE);
@@ -243,16 +241,16 @@ public class CadastroProduto extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "O código de barras deve ser pr", "Informações Incompletas", JOptionPane.ERROR_MESSAGE);
             jTextFielDescricao.isFocusable();
             return false;
-        }   
+        }
         return true;
     }
 
     private void limparCampos() {
         jTextFieldCodigo.setText("");
         jTextFielDescricao.setText("");
-        jTextFieldCodigoBarras.setValue("0");
-        jTextFieldPrecoCompra.setValue("0");
-        jTextFieldPrecoVenda.setValue("0");
+        jTextFieldCodigoBarras.setValue(null);
+        jTextFieldPrecoCompra.setValue(null);
+        jTextFieldPrecoVenda.setValue(null);
     }
 
     /**
