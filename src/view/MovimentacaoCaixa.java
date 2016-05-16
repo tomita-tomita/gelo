@@ -35,13 +35,16 @@ public class MovimentacaoCaixa extends javax.swing.JFrame {
         try{
             GeradorSQL geradorSQL = new GeradorSQL();
             geradorSQL.consultaSaldoCaixa();
-            
-            jTextFieldSaldoCaixa.setText(geradorSQL.consultaSaldoCaixa());
-            if(Float.parseFloat(jTextFieldSaldoCaixa.getText()) > 0){
-                jTextFieldSaldoCaixa.setForeground(Color.BLUE);
+            if(geradorSQL.consultaSaldoCaixa() != null){
+                jTextFieldSaldoCaixa.setText(geradorSQL.consultaSaldoCaixa());
+                if(Float.parseFloat(jTextFieldSaldoCaixa.getText()) > 0){
+                    jTextFieldSaldoCaixa.setForeground(Color.BLUE);
+                }else{
+                    jTextFieldSaldoCaixa.setForeground(Color.RED);
+                }            
             }else{
-                jTextFieldSaldoCaixa.setForeground(Color.RED);
-            }            
+                jTextFieldSaldoCaixa.setText("0.00");
+            }
             
             jTextFieldSaldoCaixa.setEditable(false);            
         } catch(SQLException ex){
