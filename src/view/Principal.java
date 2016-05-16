@@ -52,7 +52,6 @@ public class Principal extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenuItem6 = new javax.swing.JMenuItem();
-        jMenuItem10 = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         jMenuItem5 = new javax.swing.JMenuItem();
         jMenuItem8 = new javax.swing.JMenuItem();
@@ -79,7 +78,7 @@ public class Principal extends javax.swing.JFrame {
 
         getContentPane().add(uJPanelImagem1, java.awt.BorderLayout.CENTER);
 
-        jMenuProdutos.setText("Produtos");
+        jMenuProdutos.setText("Itens de Estoque");
 
         jMenuCadastrarProduto.setText("Cadastrar");
         jMenuCadastrarProduto.addActionListener(new java.awt.event.ActionListener() {
@@ -126,9 +125,6 @@ public class Principal extends javax.swing.JFrame {
             }
         });
         jMenu1.add(jMenuItem6);
-
-        jMenuItem10.setText("Ajuste");
-        jMenu1.add(jMenuItem10);
 
         jMenu2.add(jMenu1);
 
@@ -261,7 +257,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuCadastrarProduto;
     private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem10;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;

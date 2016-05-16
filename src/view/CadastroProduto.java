@@ -22,6 +22,7 @@ public class CadastroProduto extends javax.swing.JFrame {
 
     public CadastroProduto() {
         initComponents();
+        jTextFielDescricao.isFocusable();
         this.operacao = tipoOperacao.CRIACAO;
     }
 
@@ -73,6 +74,11 @@ public class CadastroProduto extends javax.swing.JFrame {
         jPanel1.add(jButtonGravar);
 
         jButtonCancelar.setText("Cancelar");
+        jButtonCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCancelarActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButtonCancelar);
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.PAGE_END);
@@ -94,7 +100,7 @@ public class CadastroProduto extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5)
                     .addComponent(jTextFieldCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(324, Short.MAX_VALUE))
+                .addContainerGap(401, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -120,11 +126,9 @@ public class CadastroProduto extends javax.swing.JFrame {
 
         jTextFieldPrecoVenda.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#,##0.00"))));
 
-        jTextFieldCodigoBarras.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
-        jTextFieldCodigoBarras.setPreferredSize(new java.awt.Dimension(6, 20));
         jTextFieldCodigoBarras.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                jTextFieldCodigoBarrasKeyReleased(evt);
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextFieldCodigoBarrasKeyPressed(evt);
             }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jTextFieldCodigoBarrasKeyTyped(evt);
@@ -138,14 +142,15 @@ public class CadastroProduto extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(10, 10, 10)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
                     .addComponent(jTextFielDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2)
                     .addComponent(jTextFieldCodigoBarras, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3)
                     .addComponent(jTextFieldPrecoCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldPrecoVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4)
-                    .addComponent(jTextFieldPrecoVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel1))
+                .addGap(203, 203, 203))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -154,22 +159,21 @@ public class CadastroProduto extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(3, 3, 3)
                 .addComponent(jTextFielDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(11, 11, 11)
+                .addGap(6, 6, 6)
                 .addComponent(jLabel2)
                 .addGap(4, 4, 4)
-                .addComponent(jTextFieldCodigoBarras, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTextFieldCodigoBarras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(6, 6, 6)
                 .addComponent(jLabel3)
                 .addGap(1, 1, 1)
                 .addComponent(jTextFieldPrecoCompra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
+                .addGap(6, 6, 6)
                 .addComponent(jLabel4)
                 .addGap(6, 6, 6)
-                .addComponent(jTextFieldPrecoVenda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addComponent(jTextFieldPrecoVenda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jPanel2.add(jPanel4, java.awt.BorderLayout.CENTER);
+        jPanel2.add(jPanel4, java.awt.BorderLayout.PAGE_END);
 
         getContentPane().add(jPanel2, java.awt.BorderLayout.CENTER);
 
@@ -187,8 +191,8 @@ public class CadastroProduto extends javax.swing.JFrame {
             try {
                 Produto produto;
 
-                precoCompra = jTextFieldPrecoCompra.getValue().toString().replace(",", ".");
-                precoVenda = jTextFieldPrecoVenda.getValue().toString().replaceAll(",", ".");
+                precoCompra = jTextFieldPrecoCompra.getText().replace(",", ".");
+                precoVenda = jTextFieldPrecoVenda.getText().replaceAll(",", ".");
                 if (precoCompra.equals("")) {
                     precoCompra = "0.00";
                 }
@@ -198,7 +202,7 @@ public class CadastroProduto extends javax.swing.JFrame {
 
                 if (operacao == tipoOperacao.CRIACAO) {
                     produto = new Produto(jTextFielDescricao.getText(),
-                            jTextFieldCodigoBarras.getValue().toString(),
+                            jTextFieldCodigoBarras.getText(),
                             Float.parseFloat(precoCompra),
                             Float.parseFloat(precoVenda));
                     gerador.cadastrarProduto(produto);
@@ -207,7 +211,7 @@ public class CadastroProduto extends javax.swing.JFrame {
                 } else {
                     produto = new Produto(Integer.parseInt(jTextFieldCodigo.getText()),
                             jTextFielDescricao.getText(),
-                            jTextFieldCodigoBarras.getValue().toString(),
+                            jTextFieldCodigoBarras.getText(),
                             Float.parseFloat(precoCompra),
                             Float.parseFloat(precoVenda));
                     gerador.alterarProduto(produto);
@@ -220,6 +224,14 @@ public class CadastroProduto extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButtonGravarActionPerformed
 
+    private void jTextFieldCodigoBarrasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldCodigoBarrasKeyPressed
+
+    }//GEN-LAST:event_jTextFieldCodigoBarrasKeyPressed
+
+    private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
+        dispose();
+    }//GEN-LAST:event_jButtonCancelarActionPerformed
+
     private void jTextFieldCodigoBarrasKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldCodigoBarrasKeyTyped
         String valor = jTextFieldCodigoBarras.getText();
         if (valor.length() >= 20) {
@@ -227,30 +239,35 @@ public class CadastroProduto extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jTextFieldCodigoBarrasKeyTyped
 
-    private void jTextFieldCodigoBarrasKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldCodigoBarrasKeyReleased
-
-    }//GEN-LAST:event_jTextFieldCodigoBarrasKeyReleased
-
     private boolean validarCampos() {
         if (jTextFielDescricao.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "A descrição do produto deve ser preenchida", "Informações Incompletas", JOptionPane.ERROR_MESSAGE);
-            jTextFielDescricao.isFocusable();
+            jTextFielDescricao.requestFocus(true);
             return false;
         }
         if (jTextFieldCodigoBarras.getText().equals("")) {
-            JOptionPane.showMessageDialog(null, "O código de barras deve ser pr", "Informações Incompletas", JOptionPane.ERROR_MESSAGE);
-            jTextFielDescricao.isFocusable();
+            JOptionPane.showMessageDialog(null, "O código de barras deve ser preenchido", "Informações Incompletas", JOptionPane.ERROR_MESSAGE);
+            jTextFieldCodigoBarras.requestFocus(true);
             return false;
         }
+        GeradorSQL geradorSQL = new GeradorSQL();
+        Produto produto = geradorSQL.pesquisarProduto("codigo_barras", jTextFieldCodigoBarras.getText());
+
+        if (produto != null) {
+            JOptionPane.showMessageDialog(null, "O código de barras já está sendo utiliado no produto código " + Integer.toString(produto.getId()), "Informações Incompletas", JOptionPane.ERROR_MESSAGE);
+            jTextFieldCodigoBarras.requestFocus(true);
+            return false;
+        }
+
         return true;
     }
 
     private void limparCampos() {
         jTextFieldCodigo.setText("");
         jTextFielDescricao.setText("");
-        jTextFieldCodigoBarras.setValue(null);
-        jTextFieldPrecoCompra.setValue(null);
-        jTextFieldPrecoVenda.setValue(null);
+        jTextFieldCodigoBarras.setText(null);
+        jTextFieldPrecoCompra.setText(null);
+        jTextFieldPrecoVenda.setText(null);
     }
 
     /**

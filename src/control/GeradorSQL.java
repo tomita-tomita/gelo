@@ -3,6 +3,8 @@ package control;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import static javassist.CtMethod.ConstParameter.string;
 import javax.swing.table.DefaultTableModel;
 
@@ -172,9 +174,13 @@ public class GeradorSQL {
         gerenciadorDeDados.executar(sql);
     }
 
-    public Produto pesquisarProduto(String campo, String valor) throws SQLException {
-        String sql = "SELECT * FROM controleestoque.produtos WHERE " + campo + " = " + valor;
-        return gerenciadorDeDados.getProduto(sql);
+    public Produto pesquisarProduto(String campo, String valor){
+        try {
+            String sql = "SELECT * FROM controleestoque.produtos WHERE " + campo + " = " + valor;
+            return gerenciadorDeDados.getProduto(sql);
+        } catch (SQLException ex) {
+            return null;
+        }
     }
 
     public int gravarRecibo(Recibo recibo) {

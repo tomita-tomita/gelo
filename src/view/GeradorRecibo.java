@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import net.sf.jasperreports.engine.JRException;
 import utils.ConnectionFactory;
@@ -46,8 +47,8 @@ public class GeradorRecibo extends javax.swing.JFrame {
         jPanel6 = new javax.swing.JPanel();
         jButtonIncluir = new javax.swing.JButton();
         jButtonRemoverItem = new javax.swing.JButton();
-        jTextFieldTaxaEntrega = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
+        jTextFieldTaxaEntrega = new javax.swing.JFormattedTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableProdutos = new javax.swing.JTable();
 
@@ -125,6 +126,7 @@ public class GeradorRecibo extends javax.swing.JFrame {
         jPanel2.add(jButtonGerarRecibo);
 
         jButton2.setText("Sair");
+        jButton2.setPreferredSize(new java.awt.Dimension(59, 23));
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -164,16 +166,22 @@ public class GeradorRecibo extends javax.swing.JFrame {
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(10, 10, 10)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButtonIncluir, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonRemoverItem, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)))
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jTextFieldTaxaEntrega, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel4))
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel6Layout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jButtonIncluir, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jButtonRemoverItem, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel6Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jLabel4)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                        .addGap(0, 4, Short.MAX_VALUE)
+                        .addComponent(jTextFieldTaxaEntrega, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -200,7 +208,7 @@ public class GeradorRecibo extends javax.swing.JFrame {
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.Float.class, java.lang.Float.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false, true, true
@@ -236,7 +244,7 @@ public class GeradorRecibo extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldFoneActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+        dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     @SuppressWarnings("empty-statement")
@@ -250,9 +258,11 @@ public class GeradorRecibo extends javax.swing.JFrame {
                 Produto produto = seletorProduto.getProduto();
 
                 if (produto != null) {
-                    String[] novoItem = {Integer.toString(produto.getId()), produto.getDescricao(), "1", Float.toString(produto.getPrecoVenda())};
+                    String[] novoItem = {Integer.toString(produto.getId()), produto.getDescricao()};
                     DefaultTableModel model = (DefaultTableModel) jTableProdutos.getModel();
                     model.addRow(novoItem);
+                    model.setValueAt(1, model.getRowCount()-1, 2);
+                    model.setValueAt(produto.getPrecoVenda(), model.getRowCount()-1, 3);
                     jTableProdutos.setModel(model);
                 }
             }
@@ -273,14 +283,18 @@ public class GeradorRecibo extends javax.swing.JFrame {
     }//GEN-LAST:event_jTableProdutosMouseClicked
 
     private void jButtonGerarReciboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGerarReciboActionPerformed
+        preencherProdutos();
         if (validarCampos()) {
+            String taxaEntrega = jTextFieldTaxaEntrega.getText();
+            if (taxaEntrega.equals("")){
+                taxaEntrega = "0.00";
+            }
             GeradorSQL geradorSQL = new GeradorSQL();
-            int id;
-            preencherProdutos();
+            int id;            
             Recibo recibo = new Recibo(jTextFieldCliente.getText(),
                     jTextFieldEndereco.getText(),
                     jTextFieldFone.getText(),
-                    Float.parseFloat(jTextFieldTaxaEntrega.getText()), produtos);
+                    Float.parseFloat(taxaEntrega), produtos);
             id = geradorSQL.gravarRecibo(recibo);
             gerarRecibo(id);
             limparCampos();
@@ -288,6 +302,15 @@ public class GeradorRecibo extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonGerarReciboActionPerformed
 
     private boolean validarCampos() {
+        if (jTextFieldCliente.getText().equals("")){
+            JOptionPane.showMessageDialog(this, "É necessário preencher o nome do cliente", "Cliente não informado", JOptionPane.ERROR_MESSAGE);
+            jTextFieldCliente.requestFocus();
+            return false;
+        }
+        if (produtos.isEmpty()){
+            JOptionPane.showMessageDialog(this, "É necessário selecionar pelo menos um produto", "Nenhum produto selecionado", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
         return true;
     }
 
@@ -306,7 +329,7 @@ public class GeradorRecibo extends javax.swing.JFrame {
         jTextFieldFone.setText("");
         jTextFieldTaxaEntrega.setText("");
         DefaultTableModel model = (DefaultTableModel) jTableProdutos.getModel();
-        for (int i = 0; i < model.getRowCount(); i++) {
+        for (int i = 1; i <= model.getRowCount(); i++) {
             model.removeRow(i);
         }
         jTableProdutos.setModel(model);
@@ -359,6 +382,6 @@ public class GeradorRecibo extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldCliente;
     private javax.swing.JTextField jTextFieldEndereco;
     private javax.swing.JFormattedTextField jTextFieldFone;
-    private javax.swing.JTextField jTextFieldTaxaEntrega;
+    private javax.swing.JFormattedTextField jTextFieldTaxaEntrega;
     // End of variables declaration//GEN-END:variables
 }

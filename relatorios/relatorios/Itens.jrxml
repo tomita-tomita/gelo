@@ -34,65 +34,65 @@
 		<band splitType="Stretch"/>
 	</background>
 	<columnHeader>
-		<band height="44" splitType="Stretch">
+		<band height="26" splitType="Stretch">
 			<staticText>
-				<reportElement x="480" y="13" width="61" height="20" uuid="12c944b2-82ab-4b6f-b24b-8f19f2990dbb"/>
+				<reportElement x="480" y="3" width="61" height="20" uuid="12c944b2-82ab-4b6f-b24b-8f19f2990dbb"/>
 				<text><![CDATA[Valor Total]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="397" y="13" width="55" height="20" uuid="af225083-b10c-4cd5-a9df-21e3bb1bdf90"/>
+				<reportElement x="397" y="3" width="55" height="20" uuid="af225083-b10c-4cd5-a9df-21e3bb1bdf90"/>
 				<text><![CDATA[Valor Unit.]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="103" y="13" width="100" height="20" uuid="98694d74-bfa9-4a25-aaae-824acbbebdb4"/>
+				<reportElement x="103" y="3" width="100" height="20" uuid="98694d74-bfa9-4a25-aaae-824acbbebdb4"/>
 				<text><![CDATA[Descrição]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="330" y="13" width="30" height="20" uuid="4b645116-8f15-4abd-ba7d-d2c40bcafbbc"/>
+				<reportElement x="330" y="3" width="30" height="20" uuid="4b645116-8f15-4abd-ba7d-d2c40bcafbbc"/>
 				<text><![CDATA[Qtd.]]></text>
 			</staticText>
 			<line>
 				<reportElement x="1" y="0" width="553" height="1" uuid="3277d81b-0543-439e-8415-471d1cce34dd"/>
 			</line>
 			<line>
-				<reportElement x="1" y="43" width="553" height="1" uuid="ed1e146c-87b3-4608-a3b7-0abb3da97e1d"/>
+				<reportElement x="1" y="24" width="553" height="1" uuid="ed1e146c-87b3-4608-a3b7-0abb3da97e1d"/>
 			</line>
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="63" splitType="Stretch">
+		<band height="38" splitType="Stretch">
 			<line>
-				<reportElement x="1" y="62" width="553" height="1" uuid="69f1bcf0-5aad-434b-be57-f419163f05a8"/>
+				<reportElement x="1" y="37" width="553" height="1" uuid="69f1bcf0-5aad-434b-be57-f419163f05a8"/>
 			</line>
 			<line>
-				<reportElement x="381" y="-43" width="1" height="105" uuid="c3a7b24a-e3d6-437a-ac3c-87b38ede3ccb"/>
+				<reportElement x="381" y="-43" width="1" height="81" uuid="c3a7b24a-e3d6-437a-ac3c-87b38ede3ccb"/>
 			</line>
 			<line>
-				<reportElement x="0" y="-43" width="1" height="105" uuid="92f91e76-4452-400d-89c1-243e1c65aa38"/>
+				<reportElement x="0" y="-67" width="1" height="105" uuid="92f91e76-4452-400d-89c1-243e1c65aa38"/>
 			</line>
 			<line>
-				<reportElement x="554" y="-43" width="1" height="105" uuid="f2ea5b51-e8ba-41e4-948e-1b39dfafa577"/>
+				<reportElement x="555" y="-68" width="1" height="105" uuid="f2ea5b51-e8ba-41e4-948e-1b39dfafa577"/>
 			</line>
 			<line>
-				<reportElement x="466" y="-43" width="1" height="105" uuid="01f292e0-6537-4220-827e-8cbc95b121ea"/>
+				<reportElement x="466" y="-68" width="1" height="105" uuid="01f292e0-6537-4220-827e-8cbc95b121ea"/>
 			</line>
 			<line>
-				<reportElement x="309" y="-43" width="1" height="105" uuid="0555884f-42b0-41f8-a30a-a4fabb40ab8e"/>
+				<reportElement x="309" y="-67" width="1" height="105" uuid="0555884f-42b0-41f8-a30a-a4fabb40ab8e"/>
 			</line>
 			<textField>
-				<reportElement x="7" y="15" width="292" height="37" uuid="00a65a0a-da2f-4899-abc7-02d2a8d5542e"/>
+				<reportElement x="7" y="6" width="292" height="30" uuid="00a65a0a-da2f-4899-abc7-02d2a8d5542e"/>
 				<textFieldExpression><![CDATA[$F{descricao}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="316" y="15" width="59" height="20" uuid="c2f3851f-f585-463c-9c72-24ef4a7934b3"/>
+				<reportElement x="316" y="6" width="59" height="20" uuid="c2f3851f-f585-463c-9c72-24ef4a7934b3"/>
 				<textFieldExpression><![CDATA[$F{quantidade}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="388" y="15" width="72" height="20" uuid="fdddec5c-cba8-456b-8c23-72a1d8f0d344"/>
+				<reportElement x="388" y="6" width="72" height="20" uuid="fdddec5c-cba8-456b-8c23-72a1d8f0d344"/>
 				<textFieldExpression><![CDATA[$F{precoUnitario}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="473" y="15" width="74" height="20" uuid="3c69dc07-fa94-4fe7-9fc5-afcc2a660bc1"/>
+				<reportElement x="473" y="6" width="74" height="20" uuid="3c69dc07-fa94-4fe7-9fc5-afcc2a660bc1"/>
 				<textFieldExpression><![CDATA[$F{precoTotal}]]></textFieldExpression>
 			</textField>
 		</band>
