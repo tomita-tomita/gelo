@@ -5,6 +5,7 @@ import control.GeradorSQL;
 import static java.awt.Frame.MAXIMIZED_BOTH;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.InputStream;
@@ -29,7 +30,9 @@ public class Principal extends javax.swing.JFrame {
             UIManager.setLookAndFeel(new WebLookAndFeel());
         } catch (Exception e) {
         }
-        initComponents();
+        initComponents();        
+        File logo = new File("./src/imagens/Logo.jpg");        
+        uJPanelImagem1.setImagem(logo);
         setExtendedState(MAXIMIZED_BOTH);
     }
     
@@ -62,8 +65,6 @@ public class Principal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Controle de Estoque");
-
-        uJPanelImagem1.setImagem(new java.io.File("C:\\Users\\Eduardo Tomita\\Documents\\Projetos\\gelo\\src\\imagens\\Logo.jpg"));
 
         javax.swing.GroupLayout uJPanelImagem1Layout = new javax.swing.GroupLayout(uJPanelImagem1);
         uJPanelImagem1.setLayout(uJPanelImagem1Layout);

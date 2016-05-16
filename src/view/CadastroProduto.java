@@ -2,6 +2,7 @@ package view;
 
 import control.GeradorSQL;
 import control.Produto;
+import java.awt.event.KeyEvent;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -55,11 +56,13 @@ public class CadastroProduto extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jTextFielDescricao = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jTextFieldCodigoBarras = new javax.swing.JTextField();
-        jTextFieldPrecoCompra = new javax.swing.JTextField();
-        jTextFieldPrecoVenda = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        jTextFieldPrecoCompra = new javax.swing.JFormattedTextField();
+        jTextFieldPrecoVenda = new javax.swing.JFormattedTextField();
+        jTextFieldCodigoBarras = new javax.swing.JFormattedTextField();
+
+        setResizable(false);
 
         jButtonGravar.setText("Gravar");
         jButtonGravar.addActionListener(new java.awt.event.ActionListener() {
@@ -91,7 +94,7 @@ public class CadastroProduto extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5)
                     .addComponent(jTextFieldCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(324, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -109,38 +112,40 @@ public class CadastroProduto extends javax.swing.JFrame {
 
         jLabel2.setText("Código de Barras");
 
-        jTextFieldCodigoBarras.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldCodigoBarrasActionPerformed(evt);
-            }
-        });
-
-        jTextFieldPrecoCompra.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldPrecoCompraActionPerformed(evt);
-            }
-        });
-
         jLabel4.setText("Preço de Venda");
 
         jLabel3.setText("Preço de Compra");
+
+        jTextFieldPrecoCompra.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#,##0.00"))));
+
+        jTextFieldPrecoVenda.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#,##0.00"))));
+
+        jTextFieldCodigoBarras.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
+        jTextFieldCodigoBarras.setPreferredSize(new java.awt.Dimension(6, 20));
+        jTextFieldCodigoBarras.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextFieldCodigoBarrasKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldCodigoBarrasKeyTyped(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(10, 10, 10)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextFielDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1)
+                    .addComponent(jTextFielDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextFieldCodigoBarras, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldCodigoBarras, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3)
-                    .addComponent(jTextFieldPrecoCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldPrecoCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4)
-                    .addComponent(jTextFieldPrecoVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(188, Short.MAX_VALUE))
+                    .addComponent(jTextFieldPrecoVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -149,24 +154,26 @@ public class CadastroProduto extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(3, 3, 3)
                 .addComponent(jTextFielDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(11, 11, 11)
                 .addComponent(jLabel2)
                 .addGap(4, 4, 4)
-                .addComponent(jTextFieldCodigoBarras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jTextFieldCodigoBarras, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel3)
                 .addGap(1, 1, 1)
                 .addComponent(jTextFieldPrecoCompra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
                 .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(6, 6, 6)
                 .addComponent(jTextFieldPrecoVenda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         jPanel2.add(jPanel4, java.awt.BorderLayout.CENTER);
 
         getContentPane().add(jPanel2, java.awt.BorderLayout.CENTER);
+
+        getAccessibleContext().setAccessibleDescription("");
 
         pack();
         setLocationRelativeTo(null);
@@ -174,23 +181,35 @@ public class CadastroProduto extends javax.swing.JFrame {
 
     private void jButtonGravarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGravarActionPerformed
         GeradorSQL gerador = new GeradorSQL();
+        String precoCompra;
+        String precoVenda;
         if (validarCampos()) {
             try {
                 Produto produto;
+
+                precoCompra = jTextFieldPrecoCompra.getValue().toString().replace(",", ".");
+                precoVenda = jTextFieldPrecoVenda.getValue().toString().replaceAll(",", ".");
+                if (precoCompra.equals("")) {
+                    precoCompra = "0.00";
+                }
+                if (precoVenda.equals("")) {
+                    precoVenda = "0.00";
+                }
+
                 if (operacao == tipoOperacao.CRIACAO) {
                     produto = new Produto(jTextFielDescricao.getText(),
-                            jTextFieldCodigoBarras.getText(),
-                            Float.parseFloat(jTextFieldPrecoCompra.getText()),
-                            Float.parseFloat(jTextFieldPrecoVenda.getText()));
+                            jTextFieldCodigoBarras.getValue().toString(),
+                            Float.parseFloat(precoCompra),
+                            Float.parseFloat(precoVenda));
                     gerador.cadastrarProduto(produto);
                     JOptionPane.showMessageDialog(null, "Produto cadastrado com sucesso", "Cadastro", JOptionPane.INFORMATION_MESSAGE);
                     limparCampos();
                 } else {
                     produto = new Produto(Integer.parseInt(jTextFieldCodigo.getText()),
                             jTextFielDescricao.getText(),
-                            jTextFieldCodigoBarras.getText(),
-                            Float.parseFloat(jTextFieldPrecoCompra.getText()),
-                            Float.parseFloat(jTextFieldPrecoVenda.getText()));
+                            jTextFieldCodigoBarras.getValue().toString(),
+                            Float.parseFloat(precoCompra),
+                            Float.parseFloat(precoVenda));
                     gerador.alterarProduto(produto);
                     JOptionPane.showMessageDialog(null, "Produto alterado com sucesso", "Alteração", JOptionPane.INFORMATION_MESSAGE);
                     dispose();
@@ -201,24 +220,39 @@ public class CadastroProduto extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButtonGravarActionPerformed
 
-    private void jTextFieldCodigoBarrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldCodigoBarrasActionPerformed
+    private void jTextFieldCodigoBarrasKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldCodigoBarrasKeyTyped
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldCodigoBarrasActionPerformed
+    }//GEN-LAST:event_jTextFieldCodigoBarrasKeyTyped
 
-    private void jTextFieldPrecoCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldPrecoCompraActionPerformed
+    private void jTextFieldCodigoBarrasKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldCodigoBarrasKeyReleased
+        if (jTextFieldCodigoBarras.getValue().toString().length() < 20){
 
-    }//GEN-LAST:event_jTextFieldPrecoCompraActionPerformed
-
+        }else{
+            evt.setKeyChar((char) KeyEvent.VK_CLEAR);
+        }
+    }//GEN-LAST:event_jTextFieldCodigoBarrasKeyReleased
+    
+    
     private boolean validarCampos() {
+        if (jTextFielDescricao.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "A descrição do produto deve ser preenchida", "Informações Incompletas", JOptionPane.ERROR_MESSAGE);
+            jTextFielDescricao.isFocusable();
+            return false;
+        }
+        if (jTextFieldCodigoBarras.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "O código de barras deve ser pr", "Informações Incompletas", JOptionPane.ERROR_MESSAGE);
+            jTextFielDescricao.isFocusable();
+            return false;
+        }   
         return true;
     }
 
     private void limparCampos() {
         jTextFieldCodigo.setText("");
         jTextFielDescricao.setText("");
-        jTextFieldCodigoBarras.setText("");
-        jTextFieldPrecoCompra.setText("");
-        jTextFieldPrecoVenda.setText("");
+        jTextFieldCodigoBarras.setValue("0");
+        jTextFieldPrecoCompra.setValue("0");
+        jTextFieldPrecoVenda.setValue("0");
     }
 
     /**
@@ -270,8 +304,8 @@ public class CadastroProduto extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JTextField jTextFielDescricao;
     private javax.swing.JTextField jTextFieldCodigo;
-    private javax.swing.JTextField jTextFieldCodigoBarras;
-    private javax.swing.JTextField jTextFieldPrecoCompra;
-    private javax.swing.JTextField jTextFieldPrecoVenda;
+    private javax.swing.JFormattedTextField jTextFieldCodigoBarras;
+    private javax.swing.JFormattedTextField jTextFieldPrecoCompra;
+    private javax.swing.JFormattedTextField jTextFieldPrecoVenda;
     // End of variables declaration//GEN-END:variables
 }
