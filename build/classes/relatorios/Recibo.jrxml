@@ -60,10 +60,6 @@
 				</textElement>
 				<text><![CDATA[Batizados, Casamentos, Festas, Eventos em Geral]]></text>
 			</staticText>
-			<image>
-				<reportElement x="0" y="-1" width="254" height="114" uuid="0f4dfcaf-ff37-41a1-8b11-a689623536a2"/>
-				<imageExpression><![CDATA["C:\\Users\\valdir\\Documents\\gelo\\Logo.jpg"]]></imageExpression>
-			</image>
 			<staticText>
 				<reportElement x="272" y="94" width="271" height="19" uuid="d76c10cd-7cc4-4349-b59c-2e5966cb1187"/>
 				<textElement>
@@ -71,6 +67,10 @@
 				</textElement>
 				<text><![CDATA[Rodovia Antônio Heill, 1703 - Itaipava - Itajaí, SC]]></text>
 			</staticText>
+			<image>
+				<reportElement x="1" y="0" width="252" height="113" uuid="4c05d5f4-b02c-486f-b278-c6d3ccc28198"/>
+				<imageExpression><![CDATA["C:\\Controle de Estoque\\Logo.jpg"]]></imageExpression>
+			</image>
 		</band>
 	</title>
 	<pageHeader>
