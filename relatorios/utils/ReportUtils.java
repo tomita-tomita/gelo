@@ -10,7 +10,6 @@ import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.view.JRViewer;
-import net.sf.jasperreports.view.JasperViewer;
 
 public class ReportUtils {
 
@@ -34,11 +33,7 @@ public class ReportUtils {
             InputStream inputStream,
             Map parametros,
             JRDataSource dataSource ) throws JRException {
- 
-        /*
-         * Cria um JasperPrint, que é a versão preenchida do relatório,
-         * usando um datasource genérico.
-         */
+         
         JasperPrint print = JasperFillManager.fillReport(
                 inputStream, parametros, dataSource );
          

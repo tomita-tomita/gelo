@@ -36,13 +36,7 @@ public class ConnectionFactory {
         return DriverManager.getConnection(url, usuario, senha);
 
     }
-
-    /**
-     * Obtém uma conexão para a base de dados sakila.
-     *
-     * @return Uma conexão para a base de dados sakila.
-     * @throws SQLException Caso ocorra algum problema durante a conexão.
-     */
+    
     public static Connection getConnectionControleEstoque() throws SQLException {
         Connection connect = DriverManager.getConnection("jdbc:mysql://localhost/controleEstoque", "root", "");
         return connect;

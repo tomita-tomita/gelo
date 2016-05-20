@@ -8,10 +8,7 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.InputStream;
 import java.sql.SQLException;
-import java.util.Date;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.JOptionPane;
@@ -338,11 +335,13 @@ public class GeradorRecibo extends javax.swing.JFrame {
 
     private void gerarRecibo(int id) {
         InputStream inputStream = getClass().getResourceAsStream("/relatorios/Recibo.jasper");
+        String caminhoItem = getClass().getResource("/relatorios/Itens.jasper").getFile();
+        String caminhoImagem = getClass().getResource("/imagens/Logo.jpg").getFile();
         Map parametros = new HashMap();
         parametros.put("id", id);
-        try {
-
-            // abre o recibo
+        parametros.put("SUBREPORT_DIR", caminhoItem);
+        parametros.put("imagem", caminhoImagem);
+        try {            
             ReportUtils.openReport("Recibo", inputStream, parametros,
                     ConnectionFactory.getConnectionControleEstoque());
         } catch (SQLException exc) {
@@ -350,18 +349,7 @@ public class GeradorRecibo extends javax.swing.JFrame {
         } catch (JRException exc) {
             exc.printStackTrace();
         }
-    }
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new GeradorRecibo().setVisible(true);
-            }
-        });
-    }
+    }    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton2;

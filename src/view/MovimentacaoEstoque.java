@@ -1,24 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package view;
 
 import control.GeradorSQL;
 import control.Produto;
-import java.sql.Date;
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author 5498465
- */
 public class MovimentacaoEstoque extends javax.swing.JFrame {
     
     GeradorSQL.tipoOperacao operacao;
@@ -147,16 +136,6 @@ public class MovimentacaoEstoque extends javax.swing.JFrame {
 
     private void jButtonGravarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGravarActionPerformed
         autoGravarNoBanco();
-//        if (validarCampos()) {
-//            try {
-//                GeradorSQL geradorSQL = new GeradorSQL();
-//                geradorSQL.realizarMovimentacao(jTextFieldCodigoBarras.getText(),
-//                        Integer.parseInt(jSpinnerQuantidade.getValue().toString()), operacao);
-//                inserirHistoricoTabela(jTextFieldCodigoBarras.getText(), jSpinnerQuantidade.getValue().toString());
-//            } catch (SQLException ex) {
-//                Logger.getLogger(MovimentacaoEstoque.class.getName()).log(Level.SEVERE, null, ex);
-//            }
-//        }
     }//GEN-LAST:event_jButtonGravarActionPerformed
 
     private void autoGravarNoBanco() {
@@ -181,57 +160,18 @@ public class MovimentacaoEstoque extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldCodigoBarrasActionPerformed
 
     @SuppressWarnings("empty-statement")
-    public void inserirHistoricoTabela(String codigoBarras, String quantidade){
-        try {
+    public void inserirHistoricoTabela(String codigoBarras, String quantidade){        
             GeradorSQL gerador = new GeradorSQL();
             Produto produto = gerador.pesquisarProduto("codigo_barras", jTextFieldCodigoBarras.getText());
             DefaultTableModel model = (DefaultTableModel)jTableHistoricoMovimentacao.getModel();  
             String data = (new java.text.SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(new java.util.Date(System.currentTimeMillis())));            
             String[] valores = {codigoBarras, produto.getDescricao(),quantidade, data};
             model.addRow(valores);            
-            jTableHistoricoMovimentacao.setModel(model);            
-        } catch (SQLException ex) {
-            Logger.getLogger(MovimentacaoEstoque.class.getName()).log(Level.SEVERE, null, ex);
-        }
+            jTableHistoricoMovimentacao.setModel(model);                    
     }
     
     public boolean validarCampos() {
         return true;
-    }
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MovimentacaoEstoque.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MovimentacaoEstoque.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MovimentacaoEstoque.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MovimentacaoEstoque.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                //new MovimentacaoEstoque().setVisible(true);
-            }
-        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

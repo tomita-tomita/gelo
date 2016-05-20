@@ -3,36 +3,24 @@ package view;
 import com.alee.laf.WebLookAndFeel;
 import control.GeradorSQL;
 import static java.awt.Frame.MAXIMIZED_BOTH;
-import java.awt.Graphics;
 import java.awt.Image;
-import java.awt.Toolkit;
-import java.awt.image.BufferedImage;
 import java.io.File;
-import java.io.InputStream;
-import java.sql.SQLException;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.imageio.ImageIO;
-import javax.swing.JOptionPane;
+import javax.swing.ImageIcon;
 import javax.swing.UIManager;
-import net.sf.jasperreports.engine.JRException;
-import utils.ConnectionFactory;
-import utils.ReportUtils;
 
 public class Principal extends javax.swing.JFrame {
-
-    BufferedImage imagemFundo;
-    
+        
     public Principal() {
         try {
             UIManager.setLookAndFeel(new WebLookAndFeel());
         } catch (Exception e) {
         }
-        initComponents();        
-        File logo = new File("./src/imagens/Logo.jpg");        
+        initComponents();                
+        File logo = new File(this.getClass().getResource("/imagens/Logo.jpg").getFile());        
         uJPanelImagem1.setImagem(logo);
+        //ImageIcon imagem = new ImageIcon(this.getClass().getResource("/imagens/Logo.jpg").getFile());
+        //this.setIconImage(imagem.getImage());
         setExtendedState(MAXIMIZED_BOTH);
     }
     
