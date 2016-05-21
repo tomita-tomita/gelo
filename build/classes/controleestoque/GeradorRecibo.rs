@@ -1,0 +1,9 @@
+view.GeradorRecibo$1
+view.GeradorRecibo$2
+view.GeradorRecibo$3
+view.GeradorRecibo$4
+view.GeradorRecibo
+view.GeradorRecibo$5
+view.GeradorRecibo$6
+view.GeradorRecibo$7
+view.GeradorRecibo$8

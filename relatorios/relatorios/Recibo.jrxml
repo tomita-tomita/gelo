@@ -43,32 +43,32 @@
 	<title>
 		<band height="113" splitType="Stretch">
 			<staticText>
-				<reportElement x="313" y="0" width="188" height="19" uuid="25fee7a5-08a4-4dd3-9b63-c30e042bd2ec"/>
+				<reportElement x="304" y="0" width="208" height="19" forecolor="#000000" uuid="25fee7a5-08a4-4dd3-9b63-c30e042bd2ec"/>
 				<textElement>
-					<font size="14" isBold="true" isItalic="false"/>
+					<font fontName="DejaVu Serif" size="14" isBold="true" isItalic="false"/>
 				</textElement>
 				<text><![CDATA[Gelo em Cubos e Escamas]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="372" y="36" width="71" height="19" uuid="44db2c77-7b0b-45a8-a82d-f8430ca6af97"/>
+				<reportElement x="366" y="36" width="85" height="19" forecolor="#000000" uuid="44db2c77-7b0b-45a8-a82d-f8430ca6af97"/>
 				<textElement>
-					<font size="12" isBold="true" isItalic="false"/>
+					<font fontName="DejaVu Serif" size="12" isBold="true" isItalic="false"/>
 				</textElement>
 				<text><![CDATA[Atendemos:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="263" y="55" width="288" height="19" uuid="2463b37b-f7aa-4504-a92b-345ae427ea2d"/>
+				<reportElement x="264" y="55" width="288" height="19" forecolor="#000000" uuid="2463b37b-f7aa-4504-a92b-345ae427ea2d"/>
 				<textElement>
-					<font size="12" isBold="true" isItalic="false"/>
+					<font fontName="DejaVu Serif" size="12" isBold="true" isItalic="false"/>
 				</textElement>
 				<text><![CDATA[Batizados, Casamentos, Festas, Eventos em Geral]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="272" y="94" width="271" height="19" uuid="d76c10cd-7cc4-4349-b59c-2e5966cb1187"/>
+				<reportElement x="263" y="94" width="291" height="19" forecolor="#000000" uuid="d76c10cd-7cc4-4349-b59c-2e5966cb1187"/>
 				<textElement>
-					<font size="12" isBold="false" isItalic="true"/>
+					<font fontName="DejaVu Serif" size="12" isBold="false" isItalic="true"/>
 				</textElement>
-				<text><![CDATA[Rodovia Antônio Heill, 1703 - Itaipava - Itajaí, SC]]></text>
+				<text><![CDATA[Rod. Antônio Heill, 1703 - Itaipava - Itajaí, SC]]></text>
 			</staticText>
 			<image>
 				<reportElement x="1" y="0" width="252" height="113" uuid="4c05d5f4-b02c-486f-b278-c6d3ccc28198"/>
@@ -80,38 +80,47 @@
 		<band height="35" splitType="Stretch"/>
 	</pageHeader>
 	<columnHeader>
-		<band height="61" splitType="Stretch">
+		<band height="105" splitType="Stretch">
 			<staticText>
 				<reportElement x="10" y="9" width="41" height="19" uuid="b3f94bb9-7504-4236-b2d3-c01bce9c6f14"/>
 				<textElement>
-					<font size="10" isBold="false" isItalic="false"/>
+					<font fontName="DejaVu Serif" size="10" isBold="false" isItalic="false"/>
 				</textElement>
 				<text><![CDATA[Cliente:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="10" y="33" width="53" height="19" uuid="5fb0ce8c-cf15-4928-b28e-a58a30881a3e"/>
+				<reportElement x="10" y="57" width="53" height="19" uuid="5fb0ce8c-cf15-4928-b28e-a58a30881a3e"/>
 				<textElement>
-					<font size="10" isBold="false" isItalic="false"/>
+					<font fontName="DejaVu Serif" size="10" isBold="false" isItalic="false"/>
 				</textElement>
 				<text><![CDATA[Endereço:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="403" y="9" width="41" height="19" uuid="8725ffef-4185-4ee8-b31e-5e3437d403a3"/>
+				<reportElement x="10" y="33" width="41" height="19" uuid="8725ffef-4185-4ee8-b31e-5e3437d403a3"/>
 				<textElement>
-					<font size="10" isBold="false" isItalic="false"/>
+					<font fontName="DejaVu Serif" size="10" isBold="false" isItalic="false"/>
 				</textElement>
 				<text><![CDATA[Fone:]]></text>
 			</staticText>
 			<textField>
 				<reportElement x="51" y="9" width="337" height="19" uuid="8c1539e9-0e6b-4ea4-b2ee-4236b56d0b36"/>
+				<textElement>
+					<font fontName="DejaVu Serif"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{cliente}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="63" y="33" width="481" height="19" uuid="f7922258-0ab3-4f35-ba83-206e76140ff6"/>
+				<reportElement x="63" y="57" width="481" height="19" uuid="f7922258-0ab3-4f35-ba83-206e76140ff6"/>
+				<textElement>
+					<font fontName="DejaVu Serif"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{endereco}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="444" y="9" width="100" height="19" uuid="e4a12ea8-0b80-4bf9-9f40-3c05cd6dfb70"/>
+				<reportElement x="51" y="33" width="100" height="19" uuid="e4a12ea8-0b80-4bf9-9f40-3c05cd6dfb70"/>
+				<textElement>
+					<font fontName="DejaVu Serif"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{telefone}]]></textFieldExpression>
 			</textField>
 		</band>
@@ -119,7 +128,7 @@
 	<detail>
 		<band height="135" splitType="Stretch">
 			<subreport>
-				<reportElement x="1" y="0" width="554" height="135" uuid="0ffb59d5-9d97-47a3-877c-c8444f3de141"/>
+				<reportElement x="1" y="0" width="554" height="123" uuid="0ffb59d5-9d97-47a3-877c-c8444f3de141"/>
 				<subreportParameter name="id_recibo">
 					<subreportParameterExpression><![CDATA[$F{id}]]></subreportParameterExpression>
 				</subreportParameter>
@@ -135,10 +144,16 @@
 		<band height="54" splitType="Stretch">
 			<staticText>
 				<reportElement x="1" y="34" width="28" height="20" uuid="6685218a-35b8-4767-9676-cb63be11af1b"/>
+				<textElement>
+					<font fontName="DejaVu Serif"/>
+				</textElement>
 				<text><![CDATA[Data: ]]></text>
 			</staticText>
 			<textField pattern="dd/MM/yyyy">
 				<reportElement x="29" y="34" width="100" height="20" uuid="2f72b840-8570-4222-a7a4-b5fcfa396180"/>
+				<textElement>
+					<font fontName="DejaVu Serif"/>
+				</textElement>
 				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
 			<line>
@@ -148,7 +163,10 @@
 				</graphicElement>
 			</line>
 			<staticText>
-				<reportElement x="394" y="33" width="53" height="20" uuid="bf361e02-1260-48ce-af37-a32ee0cc5ea8"/>
+				<reportElement x="393" y="33" width="57" height="20" uuid="bf361e02-1260-48ce-af37-a32ee0cc5ea8"/>
+				<textElement>
+					<font fontName="DejaVu Serif"/>
+				</textElement>
 				<text><![CDATA[Assinatura]]></text>
 			</staticText>
 		</band>
@@ -156,30 +174,30 @@
 	<summary>
 		<band height="42" splitType="Stretch">
 			<staticText>
-				<reportElement x="379" y="22" width="88" height="20" uuid="a7eccf10-5500-45a9-a485-e5918b883ee5"/>
+				<reportElement x="378" y="22" width="101" height="20" uuid="a7eccf10-5500-45a9-a485-e5918b883ee5"/>
 				<textElement>
-					<font size="14" isBold="true"/>
+					<font fontName="DejaVu Serif" size="14" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Valor Total:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="379" y="2" width="88" height="20" uuid="f733a3d1-2cea-437f-8aa4-b75c50d07544"/>
+				<reportElement x="378" y="2" width="101" height="20" uuid="f733a3d1-2cea-437f-8aa4-b75c50d07544"/>
 				<textElement>
-					<font size="10" isBold="true" isItalic="true"/>
+					<font fontName="DejaVu Serif" size="10" isBold="false" isItalic="false"/>
 				</textElement>
 				<text><![CDATA[Taxa de Entrega: ]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="476" y="2" width="70" height="20" uuid="a37fc09e-a14f-4561-a873-391757336ea2"/>
+				<reportElement x="483" y="2" width="70" height="20" uuid="a37fc09e-a14f-4561-a873-391757336ea2"/>
 				<textElement>
-					<font isBold="true"/>
+					<font fontName="DejaVu Serif" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{taxaEntrega}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="476" y="22" width="70" height="20" uuid="a50b1c5f-026c-4915-9bbc-11dd13eba798"/>
+				<reportElement x="483" y="22" width="70" height="20" uuid="a50b1c5f-026c-4915-9bbc-11dd13eba798"/>
 				<textElement>
-					<font isBold="true"/>
+					<font fontName="DejaVu Serif" size="14" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{valorTotal}]]></textFieldExpression>
 			</textField>
