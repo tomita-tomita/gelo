@@ -116,7 +116,6 @@ public class GerenciadorDeDados {
         }
 
         connect.close();
-
         return dadosTabela;
     }
 
