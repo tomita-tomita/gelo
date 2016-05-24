@@ -1,4 +1,4 @@
-package view;
+package controleestoque;
 
 import control.GeradorSQL;
 import java.awt.Color;

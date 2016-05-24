@@ -78,6 +78,30 @@ public class GeradorSQL {
             }
         };
     }
+    
+    public DefaultTableModel getMovimentacao(String filtros) throws SQLException {
+        String sql;
+        String[] headers = {"Tipo movimentação", "Valor", "Descrição", "Data" };
+        String[][] dados;
+
+        sql = "SELECT "
+                + "c.tipo_movimentacao, "
+                + "c.valor, "
+                + "c.descricao, "
+                + "c.data "
+                + "from "
+                + "controleestoque.caixa c";
+
+        if (!filtros.equals("")) {
+            sql = sql + filtros;
+        }
+        dados = gerenciadorDeDados.getDadosTabela(sql);
+        return new DefaultTableModel(dados, headers) {
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
+    }    
 
     public DefaultTableModel consultarProdutos(String filtros) throws SQLException {
         String sql;
@@ -96,7 +120,6 @@ public class GeradorSQL {
         if (!filtros.equals("")) {
             sql = sql + " AND " + filtros;
         }
-        System.out.println(sql);
         dados = gerenciadorDeDados.getDadosTabela(sql);
         return new DefaultTableModel(dados, headers) {
             public boolean isCellEditable(int row, int column) {
@@ -130,12 +153,100 @@ public class GeradorSQL {
         };
     }
 
-    public String consultaSaldoCaixa () throws SQLException{
+    public String consultaSaldoCaixaIntervalo(String dataInicio, String dataFim) throws SQLException {
         String sql;
-        String data = (new java.text.SimpleDateFormat("yyy-MM-dd").format(new java.util.Date(System.currentTimeMillis())));
-        sql = "SELECT sum(valor) as saldo FROM controleestoque.caixa WHERE data like '%"+ data +"%';";
+        sql = "SELECT sum(valor) as saldo FROM controleestoque.caixa WHERE data >= '"+dataInicio+"' and data <= '"+dataFim+"';";
         return gerenciadorDeDados.getSaldo(sql);
     }
+    
+    public String consultaSaldoCaixaIntervaloES(String dataInicio, String dataFim, String tipo) throws SQLException {
+        String sql;
+        switch (tipo) {
+            case "ENTRADA":
+                sql = "SELECT sum(valor) as saldo FROM controleestoque.caixa WHERE data >= '"+dataInicio+"' and data <= '"+dataFim+"' and tipo_movimentacao = '"+tipo+"';"; 
+                break;
+            case "SAIDA":
+                sql = "SELECT sum(valor) as saldo FROM controleestoque.caixa WHERE data >= '"+dataInicio+"' and data <= '"+dataFim+"' and tipo_movimentacao = '"+tipo+"';"; 
+                break;
+            default:
+                sql = "SELECT sum(valor) as saldo FROM controleestoque.caixa WHERE data >= '"+dataInicio+"' and data <= '"+dataFim+"';"; 
+                break;
+        }
+        return gerenciadorDeDados.getSaldo(sql);
+    }    
+    
+    public String consultaSaldoCaixaDia(String data) throws SQLException{
+        String sql;
+        sql = "SELECT sum(valor) as saldo FROM controleestoque.caixa WHERE data like '%"+ data +"%';";       
+        return gerenciadorDeDados.getSaldo(sql);
+    }
+    
+    public String consultaSaldoCaixaDiaES(String data, String tipo) throws SQLException{
+        String sql;
+        sql = "SELECT sum(valor) as saldo FROM controleestoque.caixa WHERE data like '%"+ data +"%' and tipo_movimentacao = '"+tipo+"';";       
+        return gerenciadorDeDados.getSaldo(sql);
+    }    
+    
+    public String consultaSaldoCaixa () throws SQLException{
+        String sql;
+        String hoje = (new java.text.SimpleDateFormat("yyy-MM-dd").format(new java.util.Date(System.currentTimeMillis())));
+        sql = "SELECT sum(valor) as saldo FROM controleestoque.caixa WHERE data like '%"+ hoje +"%';";
+        return gerenciadorDeDados.getSaldo(sql);
+    }
+    
+    public String consultaSaldoCaixaDiario (String tipo) throws SQLException{
+        String sql;
+        String data = (new java.text.SimpleDateFormat("yyy-MM-dd").format(new java.util.Date(System.currentTimeMillis())));
+        sql = "SELECT sum(valor) as saldo FROM controleestoque.caixa WHERE data like '%"+ data +"%' and tipo_movimentacao = '"+tipo+"';";
+        return gerenciadorDeDados.getSaldo(sql);
+    }    
+    
+    public String consultaSaldoCaixaTotal () throws SQLException {
+        String sql;
+        sql = "SELECT sum(valor) as saldo FROM controleestoque.caixa;";
+        return gerenciadorDeDados.getSaldo(sql);
+    }
+    
+    public String consultaSaldoCaixaMes (String mes) throws SQLException {
+        String sql;
+        if(Integer.parseInt(mes) < 10){
+            mes = "0"+mes;
+        }
+        sql = "SELECT sum(valor) as saldo FROM controleestoque.caixa WHERE data like '%-"+ mes +"-%';";
+        return gerenciadorDeDados.getSaldo(sql);
+    }
+    
+    public String consultaSaldoCaixaMesES (String mes, String tipo) throws SQLException{
+        String sql;
+        if(Integer.parseInt(mes) < 10){
+            mes = "0"+mes;
+        }
+        switch (tipo) {
+            case "ENTRADA":
+                sql = "SELECT sum(valor) as saldo FROM controleestoque.caixa WHERE data like '%-"+ mes +"-%' and tipo_movimentacao = '"+tipo+"';";
+                break;
+            case "SAIDA":
+                sql = "SELECT sum(valor) as saldo FROM controleestoque.caixa WHERE data like '%-"+ mes +"-%' and tipo_movimentacao = '"+tipo+"';";
+                break;
+            default:
+                sql = "SELECT sum(valor) as saldo FROM controleestoque.caixa WHERE data like '%-"+ mes +"-%';";
+                break;
+        }
+        
+        return gerenciadorDeDados.getSaldo(sql);        
+    }
+    
+    public String consultaTotalEntradas () throws SQLException {
+        String sql;
+        sql = "SELECT sum(valor) as saldo FROM controleestoque.caixa WHERE tipo_movimentacao = 'ENTRADA';";
+        return gerenciadorDeDados.getSaldo(sql);
+    }
+    
+    public String consultaTotalSaidas () throws SQLException {
+        String sql;
+        sql = "SELECT sum(valor) as saldo FROM controleestoque.caixa WHERE tipo_movimentacao = 'SAIDA';";
+        return gerenciadorDeDados.getSaldo(sql);
+    }    
     
     public void realizaMovimentacaoCaixa(String descricao, String valor, tipoOperacao operacao) throws SQLException{
         String sql;

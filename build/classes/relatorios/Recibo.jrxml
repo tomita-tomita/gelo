@@ -2,15 +2,15 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="3de57672-5284-4948-9729-1442e2ca0cb5">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="254"/>
 	<subDataset name="Table Dataset 1" uuid="4edaccbd-1d13-4048-8250-26fdf381437a"/>
 	<parameter name="id" class="java.lang.Integer">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
-	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+	<parameter name="SUBREPORT_DIR" class="java.io.InputStream" isForPrompting="false">
 		<defaultValueExpression><![CDATA[""]]></defaultValueExpression>
 	</parameter>
-	<parameter name="imagem" class="java.lang.String">
+	<parameter name="imagem" class="java.io.InputStream">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
 	<queryString>
@@ -174,28 +174,28 @@
 	<summary>
 		<band height="42" splitType="Stretch">
 			<staticText>
-				<reportElement x="378" y="22" width="101" height="20" uuid="a7eccf10-5500-45a9-a485-e5918b883ee5"/>
+				<reportElement x="399" y="21" width="101" height="20" uuid="a7eccf10-5500-45a9-a485-e5918b883ee5"/>
 				<textElement>
 					<font fontName="DejaVu Serif" size="14" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Valor Total:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="378" y="2" width="101" height="20" uuid="f733a3d1-2cea-437f-8aa4-b75c50d07544"/>
+				<reportElement x="399" y="1" width="101" height="20" uuid="f733a3d1-2cea-437f-8aa4-b75c50d07544"/>
 				<textElement>
 					<font fontName="DejaVu Serif" size="10" isBold="false" isItalic="false"/>
 				</textElement>
 				<text><![CDATA[Taxa de Entrega: ]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="483" y="2" width="70" height="20" uuid="a37fc09e-a14f-4561-a873-391757336ea2"/>
+				<reportElement x="504" y="1" width="50" height="20" uuid="a37fc09e-a14f-4561-a873-391757336ea2"/>
 				<textElement>
 					<font fontName="DejaVu Serif" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{taxaEntrega}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="483" y="22" width="70" height="20" uuid="a50b1c5f-026c-4915-9bbc-11dd13eba798"/>
+				<reportElement x="504" y="21" width="50" height="20" uuid="a50b1c5f-026c-4915-9bbc-11dd13eba798"/>
 				<textElement>
 					<font fontName="DejaVu Serif" size="14" isBold="true"/>
 				</textElement>

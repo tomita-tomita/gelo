@@ -1,4 +1,4 @@
-package view;
+package controleestoque;
 
 import control.GeradorSQL;
 import control.ItemRecibo;
@@ -6,7 +6,10 @@ import control.Produto;
 import control.Recibo;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -334,15 +337,17 @@ public class GeradorRecibo extends javax.swing.JFrame {
     }
 
     private void gerarRecibo(int id) {
-        InputStream inputStream = getClass().getResourceAsStream("/relatorios/Recibo.jasper");
-        String caminhoItem = getClass().getResource("/relatorios/Itens.jasper").getFile();
-        String caminhoImagem = getClass().getResource("/imagens/Logo.jpg").getFile();
+        InputStream relatorioRecibo = getClass().getResourceAsStream("/relatorios/Recibo.jasper");
+        InputStream relatorioItem = getClass().getResourceAsStream("/relatorios/Itens.jasper");
+        InputStream imagemRecibo = getClass().getResourceAsStream("/imagens/Logo.jpg");                
+        //String caminhoItem = "C:/Program Files/Sistema de Controle de Estoque/Relatórios/Itens.jasper";                
+        //String caminhoImagem = "C:/Program Files/Sistema de Controle de Estoque/Logo.jpg";
         Map parametros = new HashMap();
         parametros.put("id", id);
-        parametros.put("SUBREPORT_DIR", caminhoItem);
-        parametros.put("imagem", caminhoImagem);
+        parametros.put("SUBREPORT_DIR", relatorioItem);
+        parametros.put("imagem", imagemRecibo);
         try {            
-            ReportUtils.openReport("Recibo", inputStream, parametros,
+            ReportUtils.openReport("Recibo", relatorioRecibo, parametros,
                     ConnectionFactory.getConnectionControleEstoque());
         } catch (SQLException exc) {
             exc.printStackTrace();

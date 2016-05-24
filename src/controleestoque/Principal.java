@@ -1,7 +1,8 @@
-package view;
+package controleestoque;
 
 import com.alee.laf.WebLookAndFeel;
 import control.GeradorSQL;
+import controleestoque.HistoricoCaixa;
 import static java.awt.Frame.MAXIMIZED_BOTH;
 import java.awt.Image;
 import java.io.File;
@@ -17,7 +18,8 @@ public class Principal extends javax.swing.JFrame {
         } catch (Exception e) {
         }
         initComponents();                
-        File logo = new File(this.getClass().getResource("/imagens/Logo.jpg").getFile());        
+        //File logo = new File(getClass().getResourceAsStream("/imagens/Logo.jpg"));        
+        File logo = new File("/src/imagens/Logo.jpg");        
         uJPanelImagem1.setImagem(logo);
         //ImageIcon imagem = new ImageIcon(this.getClass().getResource("/imagens/Logo.jpg").getFile());
         //this.setIconImage(imagem.getImage());
@@ -43,6 +45,8 @@ public class Principal extends javax.swing.JFrame {
         jMenu4 = new javax.swing.JMenu();
         jMenuItem5 = new javax.swing.JMenuItem();
         jMenuItem8 = new javax.swing.JMenuItem();
+        jMenuHistoricos = new javax.swing.JMenu();
+        jMenuItem2 = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
         jMenuItem9 = new javax.swing.JMenuItem();
 
@@ -52,6 +56,8 @@ public class Principal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Controle de Estoque");
+
+        uJPanelImagem1.setImagem(new java.io.File("C:\\Program Files\\Sistema de Controle de Estoque\\Logo.jpg"));
 
         javax.swing.GroupLayout uJPanelImagem1Layout = new javax.swing.GroupLayout(uJPanelImagem1);
         uJPanelImagem1.setLayout(uJPanelImagem1Layout);
@@ -138,6 +144,18 @@ public class Principal extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu2);
 
+        jMenuHistoricos.setText("Históricos");
+
+        jMenuItem2.setText("Histórico Caixa");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        jMenuHistoricos.add(jMenuItem2);
+
+        jMenuBar1.add(jMenuHistoricos);
+
         jMenu5.setText("Ferramentas");
 
         jMenuItem9.setText("Gerar Recibo");
@@ -201,6 +219,13 @@ public class Principal extends javax.swing.JFrame {
         saida_caixa.setLocationRelativeTo(null);
     }//GEN-LAST:event_jMenuItem8ActionPerformed
 
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        HistoricoCaixa historico = new HistoricoCaixa();
+        historico.setVisible(true);
+        historico.setTitle("Histórico de movimentação de caixa");
+        historico.setLocationRelativeTo(null);
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -244,7 +269,9 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuCadastrarProduto;
+    private javax.swing.JMenu jMenuHistoricos;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
