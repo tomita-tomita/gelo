@@ -134,17 +134,23 @@ public class GerenciadorDeDados {
         Statement st = connect.createStatement();
         st.executeUpdate(comando);
     }
+    
+    public int getLastID(String comando) throws SQLException {
+        Connection connect;
+        connect = DriverManager.getConnection(URL, USUARIO, SENHA);
+        Statement st = connect.createStatement();
+        ResultSet rs = st.executeQuery(comando);
+        rs.next();
+        return rs.getInt("maxId"); 
+    }    
 
     public String getSaldo (String comando) throws SQLException{
         Connection connect;
         connect = DriverManager.getConnection(URL, USUARIO, SENHA);
         Statement st = connect.createStatement();
         ResultSet rs = st.executeQuery(comando);
-        //st.executeQuery(comando);
         rs.next();
-        return rs.getString("saldo");
-        //System.out.println(st.executeQuery(comando).getString("saldo"));
-        //return st.executeQuery(comando).getString("saldo");        
+        return rs.getString("saldo");   
     }
     
     public int getIDProduto(String codigoProduto) throws SQLException {

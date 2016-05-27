@@ -18,7 +18,8 @@ public class Principal extends javax.swing.JFrame {
         } catch (Exception e) {
         }
         initComponents();                
-        File logo = new File(this.getClass().getResource("/imagens/Logo.jpg").getFile());        
+        //File logo = new File(getClass().getResourceAsStream("/imagens/Logo.jpg"));        
+        File logo = new File("/src/imagens/Logo.jpg");        
         uJPanelImagem1.setImagem(logo);
         //ImageIcon imagem = new ImageIcon(this.getClass().getResource("/imagens/Logo.jpg").getFile());
         //this.setIconImage(imagem.getImage());
@@ -55,6 +56,8 @@ public class Principal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Controle de Estoque");
+
+        uJPanelImagem1.setImagem(new java.io.File("C:\\Program Files\\Sistema de Controle de Estoque\\Logo.jpg"));
 
         javax.swing.GroupLayout uJPanelImagem1Layout = new javax.swing.GroupLayout(uJPanelImagem1);
         uJPanelImagem1.setLayout(uJPanelImagem1Layout);
@@ -184,11 +187,13 @@ public class Principal extends javax.swing.JFrame {
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
         MovimentacaoEstoque movimentacao = new MovimentacaoEstoque(GeradorSQL.tipoOperacao.ENTRADA);
+        movimentacao.setTitle("Entrada no estoque");
         movimentacao.setVisible(true);
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
         MovimentacaoEstoque movimentacao = new MovimentacaoEstoque(GeradorSQL.tipoOperacao.SAIDA);
+        movimentacao.setTitle("Saida no estoque");
         movimentacao.setVisible(true);
     }//GEN-LAST:event_jMenuItem6ActionPerformed
 

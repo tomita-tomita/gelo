@@ -187,7 +187,7 @@ public class HistoricoCaixa extends javax.swing.JFrame {
                                             .addComponent(jTextFieldSaida))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(jButton5)))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButton3, javax.swing.GroupLayout.Alignment.TRAILING)))
@@ -221,9 +221,9 @@ public class HistoricoCaixa extends javax.swing.JFrame {
                     .addComponent(jFormattedTextFieldHistoricoDiaPara, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton5))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel5))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel6))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextFieldSaida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -315,12 +315,19 @@ public class HistoricoCaixa extends javax.swing.JFrame {
         jTextFieldSaida.setText(geradorSQL.consultaSaldoCaixaDiario("SAIDA"));
         String data = (new java.text.SimpleDateFormat("yyy-MM-dd").format(new java.util.Date(System.currentTimeMillis())));      
         String comandoWhere = " WHERE data like '%"+ data +"%' order by data;";
-        jTableHistóricoMovimentacao.setModel(geradorSQL.getMovimentacao(comandoWhere));         
-        if(Float.parseFloat(jTextFieldTotalMovimentacaoCaixa.getText()) > 0){
-            jTextFieldTotalMovimentacaoCaixa.setForeground(Color.BLUE);
+        jTableHistóricoMovimentacao.setModel(geradorSQL.getMovimentacao(comandoWhere));
+        if(geradorSQL.consultaSaldoCaixa() != null){
+            if(Float.parseFloat(jTextFieldTotalMovimentacaoCaixa.getText()) > 0){
+                jTextFieldTotalMovimentacaoCaixa.setForeground(Color.BLUE);
+            }else{
+                jTextFieldTotalMovimentacaoCaixa.setForeground(Color.RED);
+            }
         }else{
-            jTextFieldTotalMovimentacaoCaixa.setForeground(Color.RED);
-        }       
+            jTextFieldTotalMovimentacaoCaixa.setText("0.00");
+            jTextFieldTotalMovimentacaoCaixaEntrada.setText("0.00");
+            jTextFieldSaida.setText("0.00");
+            JOptionPane.showMessageDialog(null, "Nenhuma movimentação realizada hoje.", null, JOptionPane.NO_OPTION);
+        }
         } catch (SQLException ex){
             
         }

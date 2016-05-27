@@ -145,6 +145,8 @@ public class MovimentacaoEstoque extends javax.swing.JFrame {
                 geradorSQL.realizarMovimentacao(jTextFieldCodigoBarras.getText(),
                         Integer.parseInt(jSpinnerQuantidade.getValue().toString()), operacao);
                 inserirHistoricoTabela(jTextFieldCodigoBarras.getText(), jSpinnerQuantidade.getValue().toString());
+                //geradorSQL.realizarMovimentacaoEstoqueCaixa(jTextFieldCodigoBarras.getText(),
+                        //Integer.parseInt(jSpinnerQuantidade.getValue().toString()), operacao);
             } catch (SQLException ex) {
                 Logger.getLogger(MovimentacaoEstoque.class.getName()).log(Level.SEVERE, null, ex);
             }
