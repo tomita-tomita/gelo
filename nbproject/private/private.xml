@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
@@ -9,15 +8,7 @@
             <file>file:/C:/Users/Eduardo%20Tomita/Documents/Projetos/gelo/src/control/GeradorSQL.java</file>
             <file>file:/C:/Users/Eduardo%20Tomita/Documents/Projetos/gelo/src/controleestoque/Principal.java</file>
             <file>file:/C:/Users/Eduardo%20Tomita/Documents/Projetos/gelo/src/controleestoque/MovimentacaoCaixa.java</file>
+            <file>file:/C:/Users/Eduardo%20Tomita/Documents/Projetos/gelo/src/controleestoque/MovimentacaoEstoque.java</file>
         </group>
     </open-files>
 </project-private>
-=======
-<?xml version="1.0" encoding="UTF-8"?>
-<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
-    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
-    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
-    </open-files>
-</project-private>
->>>>>>> 7c2d1a9ad473089d052522d95df29ff92ed102f2
