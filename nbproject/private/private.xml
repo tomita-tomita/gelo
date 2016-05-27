@@ -3,20 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
             <file>file:/C:/Users/Eduardo%20Tomita/Documents/Projetos/gelo/src/control/GerenciadorDeDados.java</file>
+            <file>file:/C:/Users/Eduardo%20Tomita/Documents/Projetos/gelo/src/controleestoque/HistoricoCaixa.java</file>
             <file>file:/C:/Users/Eduardo%20Tomita/Documents/Projetos/gelo/src/control/GeradorSQL.java</file>
-            <file>file:/C:/Users/Eduardo%20Tomita/Documents/Projetos/gelo/src/view/MovimentacaoCaixa.java</file>
-            <file>file:/C:/Users/Eduardo%20Tomita/Documents/Projetos/gelo/src/view/MovimentacaoEstoque.java</file>
-            <file>file:/C:/Users/Eduardo%20Tomita/Documents/Projetos/gelo/src/view/Principal.java</file>
-            <file>file:/C:/Users/Eduardo%20Tomita/Documents/Projetos/gelo/relatorios/utils/ReportUtils.java</file>
-            <file>file:/C:/Users/Eduardo%20Tomita/Documents/Projetos/gelo/src/view/CadastroProduto.java</file>
-            <file>file:/C:/Users/Eduardo%20Tomita/Documents/Projetos/gelo/src/view/GeradorRecibo.java</file>
-=======
-            <file>file:/C:/Users/valdir/Documents/gelo/relatorios/utils/ReportUtils.java</file>
-            <file>file:/C:/Users/valdir/Documents/gelo/src/view/Principal.java</file>
-            <file>file:/C:/Users/valdir/Documents/gelo/src/view/GeradorRecibo.java</file>
->>>>>>> 358a2fba0bba77b279d150a317391e46a6f505dc
+            <file>file:/C:/Users/Eduardo%20Tomita/Documents/Projetos/gelo/src/controleestoque/Principal.java</file>
+            <file>file:/C:/Users/Eduardo%20Tomita/Documents/Projetos/gelo/src/controleestoque/MovimentacaoCaixa.java</file>
         </group>
     </open-files>
 </project-private>
