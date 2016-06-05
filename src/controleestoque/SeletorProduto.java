@@ -2,6 +2,9 @@ package controleestoque;
 
 import control.GeradorSQL;
 import control.Produto;
+import java.awt.Image;
+import java.awt.Toolkit;
+import java.net.URL;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -13,6 +16,9 @@ public class SeletorProduto extends javax.swing.JFrame {
 
     public SeletorProduto() {
         initComponents();
+        URL url = this.getClass().getResource("/imagens/Icone.png");
+        Image imagemTitulo = Toolkit.getDefaultToolkit().getImage(url);
+        this.setIconImage(imagemTitulo);
         realizarConsulta();
     }
 

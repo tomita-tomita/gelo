@@ -2,6 +2,9 @@ package controleestoque;
 
 import control.GeradorSQL;
 import control.Produto;
+import java.awt.Image;
+import java.awt.Toolkit;
+import java.net.URL;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -14,6 +17,9 @@ public class MovimentacaoEstoque extends javax.swing.JFrame {
     
     public MovimentacaoEstoque(GeradorSQL.tipoOperacao operacao) {
         initComponents();
+        URL url = this.getClass().getResource("/imagens/Icone.png");
+        Image imagemTitulo = Toolkit.getDefaultToolkit().getImage(url);
+        this.setIconImage(imagemTitulo);
         SpinnerNumberModel modelSpinner = new SpinnerNumberModel(1, 1, 999999, 1);
         jSpinnerQuantidade.setModel(modelSpinner);
         this.operacao = operacao;
@@ -145,6 +151,8 @@ public class MovimentacaoEstoque extends javax.swing.JFrame {
                 geradorSQL.realizarMovimentacao(jTextFieldCodigoBarras.getText(),
                         Integer.parseInt(jSpinnerQuantidade.getValue().toString()), operacao);
                 inserirHistoricoTabela(jTextFieldCodigoBarras.getText(), jSpinnerQuantidade.getValue().toString());
+                //geradorSQL.realizarMovimentacaoEstoqueCaixa(jTextFieldCodigoBarras.getText(),
+                        //Integer.parseInt(jSpinnerQuantidade.getValue().toString()), operacao);
             } catch (SQLException ex) {
                 Logger.getLogger(MovimentacaoEstoque.class.getName()).log(Level.SEVERE, null, ex);
             }

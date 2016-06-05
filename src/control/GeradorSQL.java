@@ -281,10 +281,47 @@ public class GeradorSQL {
                 + " WHERE "
                 + "p.codigo_barras = " + codigoBarras
                 + " AND p.id = e.id_produto";
-
         gerenciadorDeDados.executar(sql);
+        realizarMovimentacaoEstoqueCaixa(codigoBarras, quantidade, operacao);
     }
+    
+    public Integer lastIdCaixa () throws SQLException {
+        String sql;
+        String hoje = (new java.text.SimpleDateFormat("yyy-MM-dd").format(new java.util.Date(System.currentTimeMillis())));
+        sql = "SELECT max(id) as maxId from controleestoque.caixa;";
+        return gerenciadorDeDados.getLastID(sql);        
+    }    
+    
+    public void updateLastCaixa (String movimentacao) throws SQLException {
+        int id = lastIdCaixa();
+        String sql;
+        if("SAIDA".equals(movimentacao)){
+            sql = "UPDATE controleestoque.caixa SET tipo_movimentacao = '"+movimentacao+"', valor = -valor, descricao = CONCAT('Compra ', descricao) where id = "+id+";";
+        }else{
+            sql = "UPDATE controleestoque.caixa SET tipo_movimentacao = '"+movimentacao+"', descricao = CONCAT('Venda ', descricao) where id = "+id+";";
+        }
+        gerenciadorDeDados.executar(sql);
+    }    
+    
+    public void realizarMovimentacaoEstoqueCaixa(String codigoBarras, int quantidade, tipoOperacao operacao) throws SQLException {
+        String sql;
+        String operadorCaixa;
+        String sqlTipoMovimentacao;
+        if (operacao == tipoOperacao.ENTRADA) {
+            operadorCaixa = "SAIDA";
+            sqlTipoMovimentacao = " SELECT descricao, precoCompra*"+quantidade+" from ";
+        } else {
+            operadorCaixa = "ENTRADA";
+            sqlTipoMovimentacao =  " SELECT descricao, precoVenda*"+quantidade+" from ";
+        }
 
+        sql = "INSERT INTO controleestoque.caixa (descricao, valor)"
+                + sqlTipoMovimentacao
+                + "controleestoque.produtos where codigo_barras = '"+codigoBarras+"';\n";
+        gerenciadorDeDados.executar(sql);
+        updateLastCaixa(operadorCaixa);
+    }
+    
     public Produto pesquisarProduto(String campo, String valor){
         try {
             String sql = "SELECT * FROM controleestoque.produtos WHERE " + campo + " = " + valor;

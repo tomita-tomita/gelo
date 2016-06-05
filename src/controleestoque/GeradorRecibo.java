@@ -4,11 +4,14 @@ import control.GeradorSQL;
 import control.ItemRecibo;
 import control.Produto;
 import control.Recibo;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -26,6 +29,9 @@ public class GeradorRecibo extends javax.swing.JFrame {
 
     public GeradorRecibo() {
         initComponents();
+        URL url = this.getClass().getResource("/imagens/Icone.png");
+        Image imagemTitulo = Toolkit.getDefaultToolkit().getImage(url);
+        this.setIconImage(imagemTitulo);
     }
 
     @SuppressWarnings("unchecked")
@@ -160,6 +166,8 @@ public class GeradorRecibo extends javax.swing.JFrame {
         });
 
         jLabel4.setText("Taxa de Entrega");
+
+        jTextFieldTaxaEntrega.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#,##0.00"))));
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -329,11 +337,11 @@ public class GeradorRecibo extends javax.swing.JFrame {
         jTextFieldFone.setText("");
         jTextFieldTaxaEntrega.setText("");
         DefaultTableModel model = (DefaultTableModel) jTableProdutos.getModel();
-        for (int i = 1; i <= model.getRowCount(); i++) {
-            model.removeRow(i);
-        }
+        for (int i = 0; i <= model.getRowCount(); i++) {
+            model.removeRow(0);            
+        }        
         jTableProdutos.setModel(model);
-
+                
     }
 
     private void gerarRecibo(int id) {

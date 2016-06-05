@@ -5,27 +5,32 @@ import control.GeradorSQL;
 import controleestoque.HistoricoCaixa;
 import static java.awt.Frame.MAXIMIZED_BOTH;
 import java.awt.Image;
+import java.awt.Toolkit;
 import java.io.File;
+import java.net.URL;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.UIManager;
 
 public class Principal extends javax.swing.JFrame {
-        
+
     public Principal() {
         try {
             UIManager.setLookAndFeel(new WebLookAndFeel());
         } catch (Exception e) {
         }
-        initComponents();                
+        initComponents();
         //File logo = new File(getClass().getResourceAsStream("/imagens/Logo.jpg"));        
-        File logo = new File("/src/imagens/Logo.jpg");        
-        uJPanelImagem1.setImagem(logo);
-        //ImageIcon imagem = new ImageIcon(this.getClass().getResource("/imagens/Logo.jpg").getFile());
-        //this.setIconImage(imagem.getImage());
+//        File logo = new File("/src/imagens/Logo.jpg");        
+//        uJPanelImagem1.setImagem(logo);
+
+        URL url = this.getClass().getResource("/imagens/Icone.png");
+        Image imagemTitulo = Toolkit.getDefaultToolkit().getImage(url);
+        this.setIconImage(imagemTitulo);
+
         setExtendedState(MAXIMIZED_BOTH);
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -187,11 +192,13 @@ public class Principal extends javax.swing.JFrame {
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
         MovimentacaoEstoque movimentacao = new MovimentacaoEstoque(GeradorSQL.tipoOperacao.ENTRADA);
+        movimentacao.setTitle("Entrada no estoque");
         movimentacao.setVisible(true);
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
         MovimentacaoEstoque movimentacao = new MovimentacaoEstoque(GeradorSQL.tipoOperacao.SAIDA);
+        movimentacao.setTitle("Saida no estoque");
         movimentacao.setVisible(true);
     }//GEN-LAST:event_jMenuItem6ActionPerformed
 
@@ -209,7 +216,7 @@ public class Principal extends javax.swing.JFrame {
         MovimentacaoCaixa entrada_caixa = new MovimentacaoCaixa(GeradorSQL.tipoOperacao.ENTRADA);
         entrada_caixa.setVisible(true);
         entrada_caixa.setTitle("Cadastrar entrada de caixa");
-        entrada_caixa.setLocationRelativeTo(null);       
+        entrada_caixa.setLocationRelativeTo(null);
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed

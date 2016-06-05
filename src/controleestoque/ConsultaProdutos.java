@@ -2,8 +2,11 @@ package controleestoque;
 
 import control.GeradorSQL;
 import control.Produto;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.net.URL;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -13,6 +16,9 @@ public class ConsultaProdutos extends javax.swing.JFrame {
 
     public ConsultaProdutos() {
         initComponents();
+        URL url = this.getClass().getResource("/imagens/Icone.png");
+        Image imagemTitulo = Toolkit.getDefaultToolkit().getImage(url);
+        this.setIconImage(imagemTitulo);
         realizarConsulta();
     }
 

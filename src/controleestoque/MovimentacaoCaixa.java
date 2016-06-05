@@ -2,6 +2,9 @@ package controleestoque;
 
 import control.GeradorSQL;
 import java.awt.Color;
+import java.awt.Image;
+import java.awt.Toolkit;
+import java.net.URL;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -18,6 +21,9 @@ public class MovimentacaoCaixa extends javax.swing.JFrame {
      */
     public MovimentacaoCaixa(GeradorSQL.tipoOperacao operacao) {
         initComponents();
+        URL url = this.getClass().getResource("/imagens/Icone.png");
+        Image imagemTitulo = Toolkit.getDefaultToolkit().getImage(url);
+        this.setIconImage(imagemTitulo);
         String data = (new java.text.SimpleDateFormat("dd/MM/yyyy").format(new java.util.Date(System.currentTimeMillis())));
         jFormattedTextFieldDataMovimentacao.setText(data);
         jFormattedTextFieldDataMovimentacao.setEnabled(false);
